@@ -1,0 +1,109 @@
+import { getLangFromPath, stripLangPrefix, t, withLangPrefix } from '../i18n/ui';
+
+const pathname = Astro.url.pathname || '/';
+const active = getLangFromPath(pathname);
+const enPath = stripLangPrefix(pathname);
+const frPath = withLangPrefix('fr', enPath);
+const srLabel = t(active).nav.langToggleLabel;
+---
+
+<lang-toggle data-active={active} data-en={enPath} data-fr={frPath}>
+	<button type="button">
+		<span class="sr-only">{srLabel}</span>
+
+		<!-- EN side -->
+		<span class="label en">
+			<span class="txt">EN</span>
+		</span>
+
+		<!-- FR side -->
+		<span class="label fr">
+			<span class="txt">FR</span>
+		</span>
+	</button>
+</lang-toggle>
+
+<style>
+	button {
+		display: flex;
+		border: 0;
+		border-radius: 999rem;
+		padding: 0;
+		background-color: var(--gray-999);
+		box-shadow: inset 0 0 0 1px var(--accent-overlay);
+		cursor: pointer;
+	}
+
+	.label {
+		z-index: 1;
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.5rem 0.75rem;
+		min-width: 2.5rem;
+		height: 2rem;
+		font-size: 0.9rem;
+		font-weight: 600;
+		letter-spacing: 0.02em;
+		color: var(--accent-overlay);
+	}
+
+	/* The sliding pill background */
+	.label.en::before {
+		content: '';
+		z-index: -1;
+		position: absolute;
+		inset: 0;
+		background-color: var(--accent-regular);
+		border-radius: 999rem;
+	}
+
+	/* When FR is active, move the pill to the right */
+	:global(lang-toggle[data-active='fr']) .label.en::before {
+		transform: translateX(100%);
+	}
+
+	/* Active text color */
+	:global(lang-toggle[data-active='en']) .label.en,
+	:global(lang-toggle[data-active='fr']) .label.fr {
+		color: var(--accent-text-over);
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		.label,
+		.label.en::before {
+			transition:
+				transform var(--theme-transition),
+				color var(--theme-transition);
+		}
+	}
+
+	@media (forced-colors: active) {
+		.label.en::before {
+			background-color: SelectedItem;
+		}
+	}
+</style>
+
+<script>
+	class LangToggle extends HTMLElement {
+		constructor() {
+			super();
+
+			const button = this.querySelector('button');
+			if (!button) return;
+
+			const active = this.dataset.active;
+			const en = this.dataset.en;
+			const fr = this.dataset.fr;
+
+			// Navigate to the other language path
+			button.addEventListener('click', () => {
+				const target = active === 'fr' ? en : fr;
+				if (target) window.location.assign(target);
+			});
+		}
+	}
+	customElements.define('lang-toggle', LangToggle);
+</script>
