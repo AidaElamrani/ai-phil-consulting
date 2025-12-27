@@ -1,0 +1,28 @@
+<svg
+  width="64"
+  height="64"
+  viewBox="0 0 64 64"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-label="AI-Phil Consulting logo"
+>
+  <rect width="64" height="64" fill="none" />
+
+  <!-- Left colon -->
+  <circle cx="18" cy="26" r="3" fill="currentColor" />
+  <circle cx="18" cy="38" r="3" fill="currentColor" />
+
+  <!-- Right colon -->
+  <circle cx="46" cy="26" r="3" fill="currentColor" />
+  <circle cx="46" cy="38" r="3" fill="currentColor" />
+
+  <!-- Hyphen bridge -->
+  <line
+    x1="24"
+    y1="32"
+    x2="40"
+    y2="32"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+  />
+</svg>

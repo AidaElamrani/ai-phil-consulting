@@ -10,38 +10,41 @@ const translations = {
 		nav: {
 			links: [
 				{ label: 'Home', path: '/' },
-				{ label: 'Work', path: '/work/' },
+				//{ label: 'Work', path: '/work/' },
 				{ label: 'About', path: '/about/' },
 			] satisfies NavLink[],
 			langToggleLabel: 'Switch language',
 		},
 		home: {
-			metaTitle: 'AI-Phil Consulting | Applied AI Strategy',
+			metaTitle: 'AI-Phil Consulting | Making sense of AI',
 			metaDescription:
-				'Philosophy-informed AI consulting for leaders who need clarity, governance, and measurable value.',
+				'Helping organisations make sense of AI — its capabilities, limits, and responsible use.',
 			heroTitle: 'AI-Phil Consulting',
-			heroTagline: 'Philosophy-led AI and data strategy for regulated, mission-driven teams.',
-			heroImageAlt: 'Jeanine White smiling in a red plaid shirt and tortoise shell glasses',
+			heroTagline: 'Helping organisations make sense of AI.',
+			heroImageAlt: 'Abstract illustration representing artificial intelligence and collective understanding',
 			roles: [
-				{ icon: 'code', label: 'Technical Advisor' },
-				{ icon: 'microphone-stage', label: 'Keynote Speaker' },
-				{ icon: 'pencil-line', label: 'Author' },
+				  { icon: 'microphone-stage', label: 'Talks & Public Interventions' },
+  				  { icon: 'rocket', label: 'Training & Interactive Sessions' },
+  				  { icon: 'list', label: 'Advisory Reports ' },
 			],
 			skills: [
 				{
-					icon: 'terminal-window',
-					title: 'Full-stack research',
-					description: 'Translate analytic philosophy into pragmatic models, audits, and governance.',
+					icon: 'code',
+					title: 'Conceptual clarity',
+					description:
+					'Clarifying what AI is, what it can do, and where its limits lie — drawing on philosophy, computer science, and current research.',
 				},
 				{
-					icon: 'trophy',
-					title: 'Industry leadership',
-					description: 'Trusted by healthcare, finance, and public entities to guide AI adoption.',
+					icon: 'users-four',
+					title: 'Collective sense-making',
+					description:
+					'Facilitating discussions, trainings, and interactive formats that help organisations build a shared understanding of AI.',
 				},
 				{
 					icon: 'strategy',
-					title: 'Strategy-minded delivery',
-					description: 'Turn pilot programs into production systems that create measurable ROI.',
+					title: 'Context-aware guidance',
+					description:
+					'Situating AI technologies within organisational, social, and technical contexts to support informed and responsible use.',
 				},
 			],
 			selectedWork: {
@@ -64,40 +67,45 @@ const translations = {
 		},
 		about: {
 			metaTitle: 'About | AI-Phil Consulting',
-			metaDescription: 'Learn more about Jeanine White and the philosophy-forward practice.',
+			metaDescription: 'AI-Phil Consulting is a practice focused on helping organisations understand and navigate artificial intelligence.',
 			heroTitle: 'About',
-			heroTagline: 'Philosophy PhD turned AI strategist building ethical, scalable systems.',
-			heroImageAlt: 'Jeanine White collaborating with a colleague in the studio',
+			heroTagline:
+				'A practice at the intersection of artificial intelligence, philosophy, and collective understanding.',
+
+			heroImageAlt:
+				'Abstract illustration representing dialogue, reflection, and artificial intelligence',
+
 			sections: [
 				{
-					title: 'Background',
-					paragraphs: [
-						'I advise leadership teams on how to align AI initiatives with organizational values, regulatory expectations, and measurable outcomes.',
-						'Before founding AI-Phil Consulting I led research labs translating normative theory into trustworthy automation for public agencies and Fortune 500 companies.',
-					],
+				title: 'What this practice is',
+				paragraphs: [
+					'AI-Phil Consulting is a practice dedicated to helping organisations make sense of artificial intelligence — what it is, what it can do, and where its limits lie.',
+					'Rather than promoting tools or solutions, the focus is on understanding, orientation, and informed decision-making in contexts shaped by rapid AI adoption.',
+				],
 				},
 				{
-					title: 'Education',
-					paragraphs: [
-						'Ph.D. in Philosophy, University of British Columbia — focus on logic, ethics, and philosophy of mind.',
-						'Certified in Responsible AI Leadership, MIT Sloan & CSAIL collaborative program.',
-					],
+				title: 'How we approach AI',
+				paragraphs: [
+					'Our work draws on multiple traditions, including computer science, philosophy, and interdisciplinary research on technology and society.',
+					'We privilege clarity over hype, dialogue over prescription, and contextual understanding over one-size-fits-all answers.',
+				],
 				},
 				{
-					title: 'Capabilities',
-					paragraphs: [
-						'Executive facilitation, AI readiness assessments, governance design, model risk reviews, and policy translation into operating procedures.',
-					],
+				title: 'A collaborative structure',
+				paragraphs: [
+					'AI-Phil Consulting operates as a flexible and collaborative structure.',
+					'Depending on the mission, we may work independently or involve trusted collaborators from academic, technical, or professional networks, in order to address specific questions or contexts.',
+				],
 				},
 			],
 		},
 		contact: {
 			heading: 'Interested in working together?',
-			cta: 'Send me a message',
+			cta: 'Get in touch',
 		},
 		footer: {
-			tagline: 'Designed & developed in Portland with ',
-			owner: 'Jeanine White',
+			tagline: 'Designed & developed in Paris with ',
+			owner: 'All rights reserved.',
 		},
 		notFound: {
 			metaTitle: 'Page not found',
@@ -106,42 +114,50 @@ const translations = {
 			heroTagline: 'The page you were looking for has moved or no longer exists.',
 		},
 	},
-	fr: {
-		nav: {
-			links: [
-				{ label: 'Accueil', path: '/' },
-				{ label: 'Réalisations', path: '/work/' },
-				{ label: 'À propos', path: '/about/' },
-			] satisfies NavLink[],
-			langToggleLabel: 'Changer de langue',
-		},
-		home: {
-			metaTitle: 'AI-Phil Consulting | Stratégie IA appliquée',
-			metaDescription:
-				'Conseil en IA inspiré de la philosophie pour des dirigeant·es qui exigent rigueur, gouvernance et impact mesurable.',
-			heroTitle: 'AI-Phil Consulting',
-			heroTagline: 'Une stratégie IA et data éclairée par la philosophie pour les organisations régulées.',
-			heroImageAlt: 'Jeanine White sourit en chemise à carreaux rouges et lunettes écaille.',
-			roles: [
-				{ icon: 'code', label: 'Conseillère technique' },
-				{ icon: 'microphone-stage', label: 'Conférencière' },
-				{ icon: 'pencil-line', label: 'Autrice' },
-			],
-			skills: [
-				{
-					icon: 'terminal-window',
-					title: 'Recherche complète',
-					description: 'Transformer la philosophie analytique en modèles, audits et règles concrètes.',
-				},
-				{
-					icon: 'trophy',
-					title: 'Leadership sectoriel',
-					description: 'Référente pour la santé, la finance et le secteur public sur l’adoption de l’IA.',
-				},
-				{
-					icon: 'strategy',
-					title: 'Livrables stratégiques',
-					description: 'Convertir les pilotes en systèmes en production avec retour sur investissement mesurable.',
+fr: {
+  nav: {
+    links: [
+      { label: 'Accueil', path: '/' },
+      //{ label: 'Travaux', path: '/work/' },
+      { label: 'À propos', path: '/about/' },
+    ] satisfies NavLink[],
+    langToggleLabel: 'Changer de langue',
+  },
+
+  home: {
+    metaTitle: 'AI-Phil Consulting | Comprendre l’IA',
+    metaDescription:
+      'Aider les organisations à comprendre l’IA — ses capacités, ses limites et ses usages responsables.',
+
+    heroTitle: 'AI-Phil Consulting',
+    heroTagline: 'Aider les organisations à comprendre l’IA.',
+    heroImageAlt:
+      'Illustration abstraite représentant l’intelligence artificielle et la compréhension collective',
+
+    roles: [
+      { icon: 'microphone-stage', label: 'Conférences & interventions publiques' },
+      { icon: 'rocket', label: 'Formations & formats interactifs' },
+      { icon: 'list', label: 'Rapports de conseil' },
+    ],
+
+    skills: [
+      {
+        icon: 'code',
+        title: 'Clarté conceptuelle',
+        description:
+          'Clarifier ce qu’est l’IA, ce qu’elle permet — et ses limites — en s’appuyant sur la philosophie, l’informatique et la recherche actuelle.',
+      },
+      {
+        icon: 'users-four',
+        title: 'Construction collective de sens',
+        description:
+          'Animer des discussions, formations et formats interactifs afin d’aider les organisations à construire une compréhension partagée de l’IA.',
+      },
+      {
+        icon: 'strategy',
+        title: 'Accompagnement contextualisé',
+        description:
+          'Situer les technologies d’IA dans leurs contextes organisationnels, sociaux et techniques afin de favoriser des usages éclairés et responsables.',
 				},
 			],
 			selectedWork: {
@@ -164,40 +180,50 @@ const translations = {
 		},
 		about: {
 			metaTitle: 'À propos | AI-Phil Consulting',
-			metaDescription: 'Découvrez le parcours de Jeanine White et l’approche philosophie + IA.',
+			metaDescription:
+				'AI-Phil Consulting est une pratique dédiée à l’accompagnement des organisations dans la compréhension et l’appropriation de l’intelligence artificielle.',
+
 			heroTitle: 'À propos',
-			heroTagline: 'Docteure en philosophie devenue stratège IA pour des systèmes éthiques et scalables.',
-			heroImageAlt: 'Jeanine White collabore avec une collègue au studio',
+			heroTagline:
+				'Une pratique à l’intersection de l’intelligence artificielle, de la philosophie et de la compréhension collective.',
+
+			heroImageAlt:
+				'Illustration abstraite représentant le dialogue, la réflexion et l’intelligence artificielle',
+
 			sections: [
 				{
-					title: 'Parcours',
-					paragraphs: [
-						'J’accompagne les équipes dirigeantes pour aligner les initiatives IA sur leurs valeurs, les cadres réglementaires et les indicateurs business.',
-						'Avant AI-Phil Consulting, j’ai piloté des laboratoires de recherche qui traduisaient la théorie normative en automatisations fiables pour des agences publiques et le Fortune 500.',
-					],
+				icon: 'strategy',
+				title: 'Notre mission',
+				paragraphs: [
+					'AI-Phil Consulting est une pratique dédiée à aider les organisations à comprendre l’intelligence artificielle — ce qu’elle est, ce qu’elle permet et où se situent ses limites.',
+					
+				],
 				},
 				{
-					title: 'Formation',
-					paragraphs: [
-						'Ph. D. en philosophie, University of British Columbia — logique, éthique et philosophie de l’esprit.',
-						'Certification Responsible AI Leadership, programme conjoint MIT Sloan & CSAIL.',
-					],
+				icon: 'code',
+				title: 'Notre approche',
+				paragraphs: [
+					'Nous adoptons une approche interdisciplinaire, notamment à la croisée de l’informatique, la philosophie et l\'impact éthique de l\'IA.',
+					'Nous privilégions la clarté aux effets d’annonce, le dialogue à la prescription, et la compréhension contextuelle aux réponses standardisées.',
+				],
 				},
 				{
-					title: 'Expertises',
-					paragraphs: [
-						'Animation exécutive, diagnostics de maturité IA, conception de gouvernance, audits de risque modèle et traduction des politiques en procédures opérationnelles.',
-					],
+				icon: 'microphone-stage',
+				title: 'Une structure collaborative',
+				paragraphs: [
+					'AI-Phil Consulting fonctionne comme une structure souple et collaborative.',
+					'Selon les missions, nous pouvons intervenir de manière autonome ou faire appel à des collaborateurs de confiance issus de réseaux académiques, techniques ou professionnels, afin de répondre à des questions ou des contextes spécifiques.',
+				],
 				},
 			],
-		},
-		contact: {
-			heading: 'Envie de collaborer ?',
-			cta: 'Écrivez-moi',
-		},
+			},
+			contact: {
+			heading: 'Intéressé·e par une collaboration ?',
+			cta: 'Nous contacter',
+			},
 		footer: {
-			tagline: 'Conçu et développé à Portland avec ',
-			owner: 'Jeanine White',
+			tagline: 'Conçu et développé à Paris avec ',
+			owner: 'Tous droits réservés.',
 		},
 		notFound: {
 			metaTitle: 'Page introuvable',

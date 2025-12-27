@@ -12,12 +12,12 @@ const textLinks = t(lang).nav.links.map(({ label, path }) => ({
 
 /** Icon links to social media — edit these with links to your profiles! */
 const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[] = [
-	{ label: 'Twitter', href: 'https://twitter.com/me', icon: 'twitter-logo' },
-	{ label: 'Twitch', href: 'https://twitch.tv/me', icon: 'twitch-logo' },
-	{ label: 'GitHub', href: 'https://github.com/me', icon: 'github-logo' },
-	{ label: 'CodePen', href: 'https://codepen.io/me', icon: 'codepen-logo' },
-	{ label: 'dribbble', href: 'https://dribbble.com/me', icon: 'dribbble-logo' },
-	{ label: 'YouTube', href: 'https://www.youtube.com/@me/', icon: 'youtube-logo' },
+	// { label: 'Twitter', href: 'https://twitter.com/me', icon: 'twitter-logo' },
+	// { label: 'Twitch', href: 'https://twitch.tv/me', icon: 'twitch-logo' },
+	// { label: 'GitHub', href: 'https://github.com/me', icon: 'github-logo' },
+	// { label: 'CodePen', href: 'https://codepen.io/me', icon: 'codepen-logo' },
+	// { label: 'dribbble', href: 'https://dribbble.com/me', icon: 'dribbble-logo' },
+	// { label: 'YouTube', href: 'https://www.youtube.com/@me/', icon: 'youtube-logo' },
 ];
 
 /** Test if a link is pointing to the current page. */
@@ -32,8 +32,8 @@ const isCurrentPage = (href: string) => {
 <nav>
 	<div class="menu-header">
 		<a href={withLangPrefix(lang, '/')} class="site-title">
-			<Icon icon="terminal-window" color="var(--accent-regular)" size="1.6em" gradient />
-			Jeanine White
+			<Icon icon="ai-phil-mark" color="var(--accent-regular)" size="1.6em" gradient />
+			AI-Phil Consulting
 		</a>
 		<menu-button>
 			<template>
@@ -59,7 +59,7 @@ const isCurrentPage = (href: string) => {
 	</noscript>
 	<noscript>
 		<div class="menu-footer">
-			<div class="socials">
+			<!-- <div class="socials">
 				{
 					iconLinks.map(({ href, icon, label }) => (
 						<a href={href} class="social">
@@ -68,7 +68,7 @@ const isCurrentPage = (href: string) => {
 						</a>
 					))
 				}
-			</div>
+			</div> -->
 		</div>
 	</noscript>
 	<div id="menu-content" hidden>
