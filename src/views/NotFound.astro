@@ -1,0 +1,17 @@
+---
+import Hero from '../components/Hero.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getLangFromPath, type Lang, t } from '../i18n/ui';
+
+interface Props {
+	lang?: Lang;
+}
+
+const detectedLang = getLangFromPath(Astro.url.pathname || '/');
+const { lang = detectedLang }: Props = Astro.props;
+const copy = t(lang);
+---
+
+<BaseLayout lang={lang} title={copy.notFound.metaTitle} description={copy.notFound.metaDescription}>
+	<Hero title={copy.notFound.heroTitle} tagline={copy.notFound.heroTagline} />
+</BaseLayout>

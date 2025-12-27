@@ -1,0 +1,13 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import WorkDetail from '../../views/WorkDetail.astro';
+export { getWorkStaticPaths as getStaticPaths } from './workPaths';
+
+interface Props {
+	entry: CollectionEntry<'work'>;
+}
+
+const { entry }: Props = Astro.props;
+---
+
+<WorkDetail lang="en" entry={entry} />

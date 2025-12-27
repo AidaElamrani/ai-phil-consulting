@@ -67,6 +67,7 @@ const translations = {
 			metaDescription: 'Learn more about Jeanine White and the philosophy-forward practice.',
 			heroTitle: 'About',
 			heroTagline: 'Philosophy PhD turned AI strategist building ethical, scalable systems.',
+			heroImageAlt: 'Jeanine White collaborating with a colleague in the studio',
 			sections: [
 				{
 					title: 'Background',
@@ -166,6 +167,7 @@ const translations = {
 			metaDescription: 'Découvrez le parcours de Jeanine White et l’approche philosophie + IA.',
 			heroTitle: 'À propos',
 			heroTagline: 'Docteure en philosophie devenue stratège IA pour des systèmes éthiques et scalables.',
+			heroImageAlt: 'Jeanine White collabore avec une collègue au studio',
 			sections: [
 				{
 					title: 'Parcours',
