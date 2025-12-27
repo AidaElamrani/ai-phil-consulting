@@ -96,7 +96,7 @@ const translations = {
 			cta: 'Send me a message',
 		},
 		footer: {
-			tagline: 'Designed & developed in Portland with Astro',
+			tagline: 'Designed & developed in Portland with ',
 			owner: 'Jeanine White',
 		},
 		notFound: {
@@ -196,7 +196,7 @@ const translations = {
 			cta: 'Écrivez-moi',
 		},
 		footer: {
-			tagline: 'Conçu et développé à Portland avec Astro',
+			tagline: 'Conçu et développé à Portland avec ',
 			owner: 'Jeanine White',
 		},
 		notFound: {

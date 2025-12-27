@@ -2,13 +2,13 @@
 import Icon from './Icon.astro';
 import type { iconPaths } from './IconPaths';
 import LangToggle from './LangToggle.astro';
+import { getLangFromPath, t, withLangPrefix } from '../i18n/ui';
 
-/** Main menu items */
-const textLinks: { label: string; href: string }[] = [
-	{ label: 'Home', href: '/' },
-	{ label: 'Work', href: '/work/' },
-	{ label: 'About', href: '/about/' },
-];
+const lang = getLangFromPath(Astro.url.pathname || '/');
+const textLinks = t(lang).nav.links.map(({ label, path }) => ({
+	label,
+	href: withLangPrefix(lang, path),
+}));
 
 /** Icon links to social media — edit these with links to your profiles! */
 const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[] = [
@@ -31,7 +31,7 @@ const isCurrentPage = (href: string) => {
 
 <nav>
 	<div class="menu-header">
-		<a href="/" class="site-title">
+		<a href={withLangPrefix(lang, '/')} class="site-title">
 			<Icon icon="terminal-window" color="var(--accent-regular)" size="1.6em" gradient />
 			Jeanine White
 		</a>

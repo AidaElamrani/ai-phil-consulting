@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import WorkDetail from '../../../views/WorkDetail.astro';
-export { getWorkStaticPaths as getStaticPaths } from '../../work/workPaths';
+export { getWorkStaticPaths as getStaticPaths } from '../../../lib/work';
 
 interface Props {
 	entry: CollectionEntry<'work'>;
