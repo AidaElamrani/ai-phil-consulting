@@ -1,0 +1,51 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import { formatItems, topicItems } from '~/data/site';
+import { getPermalink } from '~/utils/permalinks';
+
+const metadata = {
+  title: 'Topics',
+};
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="Topics"
+    title="A focused set of questions for thoughtful engagement with AI"
+    subtitle="The consultancy offers independent perspectives on foundational, ethical, and emerging questions raised by artificial intelligence."
+  />
+
+  <Features2
+    title="Browse by topic"
+    columns={3}
+    items={topicItems}
+    classes={{
+      items: {
+        panel: 'rounded-2xl border border-stone-200 bg-[rgba(255,255,255,0.72)] p-6 shadow-none',
+        icon: 'w-10 h-10 mb-5 text-primary',
+      },
+    }}
+  />
+
+  <Features2
+    title="Browse by format"
+    columns={4}
+    items={formatItems}
+    classes={{
+      items: {
+        panel: 'rounded-2xl border border-stone-200 bg-[rgba(255,255,255,0.72)] p-6 shadow-none',
+        icon: 'w-10 h-10 mb-5 text-accent',
+      },
+    }}
+  />
+
+  <CallToAction
+    title="Need a topic tailored to your audience?"
+    subtitle="Talks, workshops, and panels can be adapted to the level of technical background, institutional context, and practical questions at stake."
+    actions={[{ text: 'Work with us', href: getPermalink('/work-with-us') }]}
+    classes={{ container: 'pt-8 pb-20' }}
+  />
+</Layout>

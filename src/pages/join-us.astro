@@ -1,0 +1,57 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import { getPermalink } from '~/utils/permalinks';
+
+const metadata = {
+  title: 'Join us',
+};
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="Join us"
+    title="Contribute expertise to talks, workshops, panels, and advisory work"
+    subtitle="AI-Phil Consulting invites academics, engineers, and professionals who want to contribute thoughtful expertise to public and organisational conversations about AI."
+  />
+
+  <Features2
+    title="Who this is for"
+    columns={3}
+    items={[
+      {
+        title: 'Academics',
+        description:
+          'Researchers in philosophy, computer science, law, political theory, sociology, media studies, and related fields are welcome.',
+        icon: 'tabler:book-2',
+      },
+      {
+        title: 'Engineers',
+        description:
+          'Practitioners with direct experience of AI systems can help bring technical realities into dialogue with broader questions.',
+        icon: 'tabler:cpu',
+      },
+      {
+        title: 'Professionals',
+        description:
+          'People working in policy, culture, education, design, or organisational leadership may bring valuable perspectives and case experience.',
+        icon: 'tabler:briefcase',
+      },
+    ]}
+    classes={{
+      items: {
+        panel: 'rounded-2xl border border-stone-200 bg-[rgba(255,255,255,0.72)] p-6 shadow-none',
+        icon: 'w-10 h-10 mb-5 text-primary',
+      },
+    }}
+  />
+
+  <CallToAction
+    title="Interested in contributing?"
+    subtitle="If you would like to be considered for future talks, workshops, panels, or advisory collaborations, please get in touch with a short introduction to your area of expertise."
+    actions={[{ text: 'Contact', href: getPermalink('/contact') }]}
+    classes={{ container: 'pt-8 pb-20' }}
+  />
+</Layout>

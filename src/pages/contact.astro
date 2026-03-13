@@ -1,0 +1,57 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import { getPermalink } from '~/utils/permalinks';
+
+const metadata = {
+  title: 'Contact',
+};
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="Contact"
+    title="Start a conversation"
+    subtitle="AI-Phil Consulting welcomes enquiries about talks, workshops, panels, and advisory requests."
+  />
+
+  <Features2
+    title="Contact"
+    columns={3}
+    items={[
+      {
+        title: 'Paris based',
+        description: 'The consultancy is based in Paris and can support local, national, and international collaborations.',
+        icon: 'tabler:building-community',
+      },
+      {
+        title: 'International work possible',
+        description: 'Remote and cross-border engagements are possible depending on format, audience, and scope.',
+        icon: 'tabler:world',
+      },
+      {
+        title: 'Confidentiality respected',
+        description: 'Requests and early conversations are approached with discretion and appropriate confidentiality.',
+        icon: 'tabler:lock',
+      },
+    ]}
+    classes={{
+      items: {
+        panel: 'rounded-2xl border border-stone-200 bg-[rgba(255,255,255,0.72)] p-6 shadow-none',
+        icon: 'w-10 h-10 mb-5 text-primary',
+      },
+    }}
+  />
+
+  <CallToAction
+    title="Discuss a request"
+    subtitle="To discuss a talk, workshop, panel, or advisory need, please make contact and outline the context, audience, and timeline."
+    actions={[
+      { text: 'Work with us', href: getPermalink('/work-with-us') },
+      { text: 'Topics', href: getPermalink('/topics') },
+    ]}
+    classes={{ container: 'pt-8 pb-20' }}
+  />
+</Layout>

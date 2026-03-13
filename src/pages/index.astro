@@ -1,5 +1,99 @@
 ---
-import Home from '../views/Home.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import { formatItems, homePillars, topicItems } from '~/data/site';
+import { getPermalink } from '~/utils/permalinks';
+
+const metadata = {
+  title: 'Independent perspectives on artificial intelligence and its implications',
+  ignoreTitleTemplate: true,
+};
 ---
 
-<Home lang="en" />
+<Layout metadata={metadata}>
+  <Hero
+    actions={[
+      { variant: 'primary', text: 'Explore our topics', href: getPermalink('/topics') },
+      { text: 'Work with us', href: getPermalink('/work-with-us') },
+    ]}
+  >
+    <Fragment slot="title">AI-Phil Consulting</Fragment>
+
+    <Fragment slot="subtitle">Independent perspectives on artificial intelligence and its implications</Fragment>
+
+    <Fragment slot="content">
+      <p class="mx-auto mt-10 max-w-3xl text-lg leading-8 text-muted">
+        Artificial intelligence raises questions that cannot be addressed by technology alone. AI-Phil Consulting brings
+        together perspectives from philosophy, computer science, and the social sciences to help organisations engage
+        thoughtfully with the ethical, societal, and conceptual challenges raised by AI.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(154,122,88,0.12),_transparent_45%)]"></div>
+    </Fragment>
+  </Hero>
+
+  <Features3
+    title="Three pillars"
+    subtitle="Independent and rigorous work for organisations looking beyond surface-level AI discourse."
+    columns={3}
+    items={homePillars}
+    classes={{
+      items: {
+        panel: 'rounded-2xl border border-stone-200 bg-[rgba(255,255,255,0.72)] p-6 shadow-none',
+        icon: 'w-11 h-11 mb-5 text-primary',
+      },
+    }}
+  />
+
+  <Features2
+    title="What we do"
+    subtitle="Formats designed for organisations, institutions, and teams that need clear thinking on AI."
+    columns={4}
+    items={formatItems}
+    classes={{
+      items: {
+        panel: 'rounded-2xl border border-stone-200 bg-[rgba(255,255,255,0.72)] p-6 shadow-none',
+        icon: 'w-10 h-10 mb-5 text-accent',
+      },
+    }}
+  />
+
+  <Features2
+    title="Topics preview"
+    subtitle="Selected areas of inquiry for talks, workshops, panels, and advisory work."
+    columns={3}
+    items={topicItems}
+    classes={{
+      items: {
+        panel: 'rounded-2xl border border-stone-200 bg-[rgba(255,255,255,0.72)] p-6 shadow-none',
+        icon: 'w-10 h-10 mb-5 text-primary',
+      },
+    }}
+  />
+
+  <CallToAction
+    title="About AI-Phil Consulting"
+    subtitle="AI-Phil Consulting was founded in Paris to provide independent, intellectually rigorous perspectives on artificial intelligence."
+    actions={[{ text: 'About', href: getPermalink('/about') }]}
+    classes={{ container: 'pt-8' }}
+  />
+
+  <CallToAction
+    title="Join us"
+    subtitle="Researchers and professionals interested in contributing to talks, workshops, panels, or advisory work are invited to get in touch."
+    actions={[{ text: 'Join us', href: getPermalink('/join-us') }]}
+    classes={{ container: 'pt-0' }}
+  />
+
+  <CallToAction
+    title="Contact"
+    subtitle="If you would like to discuss talks, workshops, or advisory requests, we would be glad to hear from you."
+    actions={[{ text: 'Contact', href: getPermalink('/contact') }]}
+    classes={{ container: 'pt-0 pb-20' }}
+  />
+</Layout>

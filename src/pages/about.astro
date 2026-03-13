@@ -1,5 +1,76 @@
 ---
-import About from '../views/About.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import { valuesItems } from '~/data/site';
+import { getPermalink } from '~/utils/permalinks';
+
+const metadata = {
+  title: 'About',
+};
 ---
 
-<About lang="en" />
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="About"
+    title="A small intellectual studio for serious conversations about AI"
+    subtitle="AI-Phil Consulting was founded and is coordinated by Aïda Elamrani. It combines philosophy, science, and AI expertise in work designed for organisations seeking intellectual clarity rather than ready-made talking points."
+  />
+
+  <Features2
+    title="How the consultancy is organised"
+    columns={2}
+    items={[
+      {
+        title: 'Founded by Aïda Elamrani',
+        description:
+          'AI-Phil Consulting was founded and is coordinated by Aïda Elamrani, bringing together philosophical inquiry and close engagement with contemporary AI debates.',
+        icon: 'tabler:user-circle',
+      },
+      {
+        title: 'Interdisciplinary expertise',
+        description:
+          'The work combines philosophy, science, and AI expertise to address conceptual, ethical, and societal questions in a way that remains practically useful.',
+        icon: 'tabler:stack-2',
+      },
+      {
+        title: 'Networked collaboration',
+        description:
+          'Projects can draw on a network of researchers and professionals when a broader range of perspectives or specialist knowledge is needed.',
+        icon: 'tabler:network',
+      },
+      {
+        title: 'Paris based, international in scope',
+        description:
+          'AI-Phil Consulting is based in Paris and works internationally with organisations, institutions, and events across borders.',
+        icon: 'tabler:map-pin',
+      },
+    ]}
+    classes={{
+      items: {
+        panel: 'rounded-2xl border border-stone-200 bg-[rgba(255,255,255,0.72)] p-6 shadow-none',
+        icon: 'w-10 h-10 mb-5 text-primary',
+      },
+    }}
+  />
+
+  <Features2
+    title="Values"
+    columns={4}
+    items={valuesItems}
+    classes={{
+      items: {
+        panel: 'rounded-2xl border border-stone-200 bg-[rgba(255,255,255,0.72)] p-6 shadow-none',
+        icon: 'w-10 h-10 mb-5 text-accent',
+      },
+    }}
+  />
+
+  <CallToAction
+    title="Interested in working together?"
+    subtitle="The consultancy supports talks, workshops, panels, and advisory work for organisations that want careful, independent perspectives on AI."
+    actions={[{ text: 'Work with us', href: getPermalink('/work-with-us') }]}
+    classes={{ container: 'pt-8 pb-20' }}
+  />
+</Layout>
