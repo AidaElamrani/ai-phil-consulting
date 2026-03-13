@@ -1,8 +1,10 @@
 import { getPermalink } from '~/utils/permalinks';
 
 export const navLinks = [
+  { text: 'Home', href: getPermalink('/') },
   { text: 'About', href: getPermalink('/about') },
   { text: 'Topics', href: getPermalink('/topics') },
+  { text: 'Services', href: getPermalink('/services') },
   { text: 'Join us', href: getPermalink('/join-us') },
   { text: 'Contact', href: getPermalink('/contact') },
 ];

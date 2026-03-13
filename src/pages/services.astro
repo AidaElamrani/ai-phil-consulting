@@ -1,0 +1,40 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import { formatItems } from '~/data/site';
+import { getPermalink } from '~/utils/permalinks';
+
+const metadata = {
+  title: 'Services',
+};
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="Services"
+    title="Formats for organisations, institutions, and public-facing events"
+    subtitle="AI-Phil Consulting offers talks, panels, workshops, and advisory analysis for organisations that want careful, independent perspectives on artificial intelligence."
+  />
+
+  <Features2
+    title="Formats"
+    subtitle="Services are designed to support reflection, discussion, and practical decision-making."
+    columns={4}
+    items={formatItems}
+    classes={{
+      items: {
+        panel: 'rounded-2xl border border-stone-200 bg-[rgba(255,255,255,0.72)] p-6 shadow-none',
+        icon: 'w-10 h-10 mb-5 text-primary',
+      },
+    }}
+  />
+
+  <CallToAction
+    title="Discuss a service"
+    subtitle="If you are planning a talk, panel, workshop, or advisory request, the next step is a short conversation about your context and audience."
+    actions={[{ text: 'Contact', href: getPermalink('/contact') }]}
+    classes={{ container: 'pt-8 pb-20' }}
+  />
+</Layout>

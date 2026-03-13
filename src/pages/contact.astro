@@ -1,9 +1,8 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
+import Contact from '~/components/widgets/Contact.astro';
 import Features2 from '~/components/widgets/Features2.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
-import { getPermalink } from '~/utils/permalinks';
 
 const metadata = {
   title: 'Contact',
@@ -14,7 +13,42 @@ const metadata = {
   <HeroText
     tagline="Contact"
     title="Start a conversation"
-    subtitle="AI-Phil Consulting welcomes enquiries about talks, workshops, panels, and advisory requests."
+    subtitle="AI-Phil Consulting welcomes enquiries about topics, services, collaborations, and other requests."
+  />
+
+  <Contact
+    title="Contact form"
+    subtitle="Use the form below to send an email to contact@ai-phil.consulting."
+    action="mailto:contact@ai-phil.consulting"
+    method="post"
+    enctype="text/plain"
+    inputs={[
+      {
+        type: 'text',
+        name: 'name',
+        label: 'Name',
+        autocomplete: 'name',
+      },
+      {
+        type: 'email',
+        name: 'email',
+        label: 'Email',
+        autocomplete: 'email',
+      },
+      {
+        type: 'text',
+        name: 'organisation',
+        label: 'Organisation',
+        autocomplete: 'organization',
+      },
+    ]}
+    textarea={{
+      label: 'Message',
+      name: 'message',
+      rows: 6,
+    }}
+    button="Send email"
+    description="Submitting this form opens your email client with the message addressed to contact@ai-phil.consulting."
   />
 
   <Features2
@@ -43,15 +77,5 @@ const metadata = {
         icon: 'w-10 h-10 mb-5 text-primary',
       },
     }}
-  />
-
-  <CallToAction
-    title="Discuss a request"
-    subtitle="To discuss a talk, workshop, panel, or advisory need, please make contact and outline the context, audience, and timeline."
-    actions={[
-      { text: 'Work with us', href: getPermalink('/work-with-us') },
-      { text: 'Topics', href: getPermalink('/topics') },
-    ]}
-    classes={{ container: 'pt-8 pb-20' }}
   />
 </Layout>

@@ -3,9 +3,10 @@ import type { Form as Props } from '~/types';
 import Button from '~/components/ui/Button.astro';
 
 const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } = Astro.props;
+const { action = '', method = 'post', enctype = 'application/x-www-form-urlencoded' } = Astro.props;
 ---
 
-<form>
+<form action={action} method={method} enctype={enctype}>
   {
     inputs &&
       inputs.map(

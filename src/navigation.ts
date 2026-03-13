@@ -3,7 +3,7 @@ import { navLinks } from './data/site';
 
 export const headerData = {
   links: navLinks,
-  actions: [{ text: 'Work with us', href: getPermalink('/work-with-us') }],
+  actions: [],
 };
 
 export const footerData = {
@@ -12,8 +12,8 @@ export const footerData = {
       title: 'Navigate',
       links: [
         { text: 'About', href: getPermalink('/about') },
-        { text: 'Work with us', href: getPermalink('/work-with-us') },
         { text: 'Topics', href: getPermalink('/topics') },
+        { text: 'Services', href: getPermalink('/services') },
       ],
     },
     {

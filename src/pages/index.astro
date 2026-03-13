@@ -17,7 +17,7 @@ const metadata = {
   <Hero
     actions={[
       { variant: 'primary', text: 'Explore our topics', href: getPermalink('/topics') },
-      { text: 'Work with us', href: getPermalink('/work-with-us') },
+      { text: 'Services', href: getPermalink('/services') },
     ]}
   >
     <Fragment slot="title">AI-Phil Consulting</Fragment>
@@ -51,7 +51,7 @@ const metadata = {
   />
 
   <Features2
-    title="What we do"
+    title="Services"
     subtitle="Formats designed for organisations, institutions, and teams that need clear thinking on AI."
     columns={4}
     items={formatItems}
@@ -65,7 +65,7 @@ const metadata = {
 
   <Features2
     title="Topics preview"
-    subtitle="Selected areas of inquiry for talks, workshops, panels, and advisory work."
+    subtitle="Selected areas of inquiry for talks, panels, workshops, and advisory work."
     columns={3}
     items={topicItems}
     classes={{
@@ -77,10 +77,17 @@ const metadata = {
   />
 
   <CallToAction
+    title="Services"
+    subtitle="AI-Phil Consulting offers talks, panels, workshops, and advisory analysis for organisations engaging seriously with AI."
+    actions={[{ text: 'Services', href: getPermalink('/services') }]}
+    classes={{ container: 'pt-8' }}
+  />
+
+  <CallToAction
     title="About AI-Phil Consulting"
     subtitle="AI-Phil Consulting was founded in Paris to provide independent, intellectually rigorous perspectives on artificial intelligence."
     actions={[{ text: 'About', href: getPermalink('/about') }]}
-    classes={{ container: 'pt-8' }}
+    classes={{ container: 'pt-0' }}
   />
 
   <CallToAction
