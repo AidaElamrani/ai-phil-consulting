@@ -2,4 +2,10 @@
 import siteLogo from '~/assets/images/logo.svg';
 ---
 
-<img src={siteLogo.src} alt="AI-Phil Consulting" class="block h-10 md:h-9 w-auto" loading="eager" />
+<span class="flex items-center gap-3 leading-none">
+  <img src={siteLogo.src} alt="AI-Phil Consulting" class="block h-10 md:h-9 w-auto flex-none" loading="eager" />
+  <span class="flex flex-col justify-center">
+    <span class="font-heading text-[1.35rem] md:text-[1.2rem] text-slate-900 whitespace-nowrap">AI-Phil Consulting</span>
+    <span class="mt-1 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-muted whitespace-nowrap">PARIS</span>
+  </span>
+</span>
