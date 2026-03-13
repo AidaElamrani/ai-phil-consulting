@@ -21,6 +21,7 @@ export default {
 
       animation: {
         fade: 'fadeInUp 1s both',
+        'hero-fade': 'fadeInUp 320ms ease-out both',
       },
 
       keyframes: {
