@@ -18,6 +18,17 @@ const {
 <meta name="generator" content={Astro.generator} />
 <title>{title}</title>
 
+<script is:inline>
+	(() => {
+		const storageKey = 'site-theme';
+		const root = document.documentElement;
+		const savedTheme = localStorage.getItem(storageKey);
+		const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+		const isDark = savedTheme ? savedTheme === 'dark' : systemPrefersDark;
+		root.classList.toggle('theme-dark', isDark);
+	})();
+</script>
+
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,3 +36,5 @@ const {
 	href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,700;1,400&family=Rubik:wght@500;600&display=swap"
 	rel="stylesheet"
 />
+<script data-goatcounter="https://ai-phil-consulting.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>

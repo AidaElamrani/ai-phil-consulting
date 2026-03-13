@@ -21,8 +21,8 @@ type SkillItem = { icon: IconName; title: string; description: string };
 
 const { lang = 'en' }: Props = Astro.props;
 const copy = t(lang);
-const heroRoles = copy.home.roles as { icon: IconName; label: string }[];
-const skillItems = copy.home.skills as SkillItem[];
+const heroRoles = [...(copy.home.roles as readonly { icon: IconName; label: string }[])] as { icon: IconName; label: string }[];
+const skillItems = [...copy.home.skills] as SkillItem[];
 
 const projects = (await getCollection('work'))
 	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())

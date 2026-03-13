@@ -37,19 +37,41 @@ export const iconPaths = {
 	'instagram-logo': `<circle cx="128" cy="128" r="40" fill="none" stroke-miterlimit="10" stroke-width="16"/><rect width="184" height="184" x="36" y="36" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" rx="48"/><circle cx="180" cy="76" r="12" stroke="none" />`,
 	'tiktok-logo': `<path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" d="M168 106a96 96 0 0 0 56 18V84a56 56 0 0 1-56-56h-40v128a28 28 0 1 1-40-25V89a68 68 0 1 0 80 67Z"/>`,
 	'ai-phil-mark': `
-		<circle cx="80" cy="96" r="8" />
-		<circle cx="80" cy="160" r="8" />
+  <path d="
+      M32 56
+      V224
+      H224
+      V32
+      H144
+    "
+    fill="none"
+    stroke-width="15"
+    stroke-linecap="round"
+    stroke-linejoin="round"/>
 
-		<circle cx="176" cy="96" r="8" />
-		<circle cx="176" cy="160" r="8" />
+  <line x1="60" y1="184"
+        x2="128" y2="64"
+        stroke-width="14"
+        stroke-linecap="round"/>
 
-		<line
-			x1="104"
-			y1="128"
-			x2="152"
-			y2="128"
-			stroke-width="16"
-			stroke-linecap="round"
-		/>
-		`,
+  <line x1="196" y1="184"
+        x2="128" y2="64"
+        stroke-width="14"
+        stroke-linecap="round"/>
+
+  <g transform="rotate(27 128 148)">
+
+    <line x1="136" y1="80"
+          x2="136" y2="200"
+          stroke-width="10"
+          stroke-linecap="round"/>
+
+    <ellipse cx="136"
+             cy="160"
+             rx="28"
+             ry="18"
+             fill="none"
+             stroke-width="12"/>
+
+  </g>`,
 };

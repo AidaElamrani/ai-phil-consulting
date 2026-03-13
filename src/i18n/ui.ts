@@ -10,7 +10,7 @@ const translations = {
 		nav: {
 			links: [
 				{ label: 'Home', path: '/' },
-				//{ label: 'Work', path: '/work/' },
+				{ label: 'Work', path: '/work/' },
 				{ label: 'About', path: '/about/' },
 			] satisfies NavLink[],
 			langToggleLabel: 'Switch language',
@@ -24,8 +24,8 @@ const translations = {
 			heroImageAlt: 'Abstract illustration representing artificial intelligence and collective understanding',
 			roles: [
 				  { icon: 'microphone-stage', label: 'Talks & Public Interventions' },
-  				  { icon: 'rocket', label: 'Training & Interactive Sessions' },
-  				  { icon: 'list', label: 'Advisory Reports ' },
+  				  { icon: 'rocket-launch', label: 'Training & Interactive Sessions' },
+  				  { icon: 'list', label: 'Advisory Reports' },
 			],
 			skills: [
 				{
@@ -118,7 +118,7 @@ fr: {
   nav: {
     links: [
       { label: 'Accueil', path: '/' },
-      //{ label: 'Travaux', path: '/work/' },
+      { label: 'Prestations', path: '/work/' },
       { label: 'À propos', path: '/about/' },
     ] satisfies NavLink[],
     langToggleLabel: 'Changer de langue',
@@ -127,17 +127,17 @@ fr: {
   home: {
     metaTitle: 'AI-Phil Consulting | Comprendre l’IA',
     metaDescription:
-      'Aider les organisations à comprendre l’IA — ses capacités, ses limites et ses usages responsables.',
+      'Déchiffrer l’IA — ses capacités, ses limites et ses usages responsables.',
 
     heroTitle: 'AI-Phil Consulting',
-    heroTagline: 'Aider les organisations à comprendre l’IA.',
+    heroTagline: 'Déchiffrer l’IA: comprendre ses limites et ses capacités pour éclairer son usage responsable.',
     heroImageAlt:
       'Illustration abstraite représentant l’intelligence artificielle et la compréhension collective',
 
     roles: [
-      { icon: 'microphone-stage', label: 'Conférences & interventions publiques' },
-      { icon: 'rocket', label: 'Formations & formats interactifs' },
-      { icon: 'list', label: 'Rapports de conseil' },
+      { icon: 'microphone-stage', label: 'Conférences' },
+      { icon: 'rocket', label: 'Formations' },
+      { icon: 'list', label: 'Rapports' },
     ],
 
     skills: [
@@ -172,7 +172,7 @@ fr: {
 			},
 		},
 		work: {
-			metaTitle: 'Réalisations | AI-Phil Consulting',
+			metaTitle: 'Prestations | AI-Phil Consulting',
 			metaDescription: 'Parcourez les récents projets et programmes de transformation AI-Phil Consulting.',
 			heroTitle: 'Réalisations',
 			heroTagline: 'Instantanés d’accompagnements stratégiques et de feuilles de route.',
