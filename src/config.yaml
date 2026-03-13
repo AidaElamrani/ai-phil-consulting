@@ -11,7 +11,7 @@ metadata:
   title:
     default: AI-Phil Consulting
     template: '%s | AI-Phil Consulting'
-  description: 'Independent perspectives on artificial intelligence and its implications.'
+  description: 'Get unthetered expert AI consulting services.'
   robots:
     index: true
     follow: true
