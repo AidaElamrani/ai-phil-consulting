@@ -1,6 +1,7 @@
 ---
 import Image from '~/components/common/Image.astro';
 import Button from '~/components/ui/Button.astro';
+import siteLogo from '~/assets/images/logo.svg';
 
 import type { Hero as Props } from '~/types';
 
@@ -18,18 +19,25 @@ const {
 } = Astro.props;
 ---
 
-<section class="relative md:-mt-[76px] not-prose" {...id ? { id } : {}}>
+<section class="relative md:-mt-[56px] not-prose" {...id ? { id } : {}}>
   <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
     <slot name="bg">
       {bg ? <Fragment set:html={bg} /> : null}
     </slot>
   </div>
   <div class="relative mx-auto max-w-7xl px-4 sm:px-6">
-    <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
-    <div class="py-10 md:py-14 lg:py-16">
+    <div class="pt-0 md:pt-[56px] pointer-events-none"></div>
+    <div class="py-12 md:py-14 lg:py-16">
       <div class="mx-auto max-w-[80rem]">
-        <div class="grid items-start gap-10 text-center lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] lg:gap-16 lg:text-left xl:gap-20">
-          <div class="flex flex-col justify-start lg:pt-2">
+        <div class="relative grid items-start gap-y-10 lg:grid-cols-[minmax(0,0.44fr)_minmax(0,0.56fr)] lg:gap-x-[clamp(4.5rem,7vw,5.625rem)]">
+          <div class="flex flex-col justify-start lg:items-end lg:pt-2 lg:text-right">
+            <img
+              src={siteLogo.src}
+              alt=""
+              class="mb-6 block h-auto w-[4.5rem] opacity-70 lg:hidden"
+              loading="eager"
+              aria-hidden="true"
+            />
             {
               tagline && (
                 <p
@@ -46,18 +54,18 @@ const {
                 />
               )
             }
-            <div class="mx-auto max-w-[36rem] lg:mx-0">
+            <div class="max-w-[36rem] lg:ml-auto lg:max-w-[34rem]">
               {
                 subtitle && (
                   <p
-                    class="mx-auto mb-7 max-w-[36rem] font-sans text-[clamp(1.2rem,2vw,1.6rem)] font-normal leading-[1.35] text-[rgb(39_44_52_/_.78)] motion-safe:animate-hero-fade lg:mx-0 lg:mb-7"
+                    class="mb-7 max-w-[36rem] font-sans text-[clamp(1.2rem,2vw,1.6rem)] font-normal leading-[1.35] text-[rgb(39_44_52_/_.78)] motion-safe:animate-hero-fade lg:mb-7"
                     set:html={subtitle}
                   />
                 )
               }
               {
                 actions && (
-                  <div class="mx-auto flex max-w-xs flex-col flex-nowrap gap-3 motion-safe:animate-hero-fade sm:max-w-md sm:flex-row sm:justify-center sm:gap-4 lg:mx-0 lg:max-w-none lg:justify-start">
+                  <div class="flex max-w-xs flex-col flex-nowrap gap-4 motion-safe:animate-hero-fade sm:max-w-md sm:flex-row sm:justify-start lg:max-w-none lg:justify-end">
                     {Array.isArray(actions) ? (
                       actions.map((action) => (
                         <div class="flex w-full sm:w-auto">
@@ -71,6 +79,12 @@ const {
                 )
               }
             </div>
+          </div>
+          <div
+            class="pointer-events-none absolute left-[43.75%] top-[4.5rem] hidden translate-x-[62%] lg:block"
+            aria-hidden="true"
+          >
+            <img src={siteLogo.src} alt="" class="h-auto w-[5.75rem] opacity-[0.18]" loading="eager" />
           </div>
           {content && (
             <div class="relative lg:pt-3">
