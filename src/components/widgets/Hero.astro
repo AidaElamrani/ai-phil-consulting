@@ -24,52 +24,60 @@ const {
       {bg ? <Fragment set:html={bg} /> : null}
     </slot>
   </div>
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6">
     <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
-    <div class="py-12 md:py-20">
-      <div class="text-center pb-10 md:pb-16 max-w-5xl mx-auto">
-        {
-          tagline && (
-            <p
-              class="text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase motion-safe:animate-hero-fade"
-              set:html={tagline}
-            />
-          )
-        }
-        {
-          title && (
-            <h1
-              class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200 motion-safe:animate-hero-fade"
-              set:html={title}
-            />
-          )
-        }
-        <div class="max-w-3xl mx-auto">
-          {
-            subtitle && (
-              <p
-                class="text-xl text-muted mb-6 dark:text-slate-300 motion-safe:animate-hero-fade"
-                set:html={subtitle}
-              />
-            )
-          }
-          {
-            actions && (
-              <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 motion-safe:animate-hero-fade">
-                {Array.isArray(actions) ? (
-                  actions.map((action) => (
-                    <div class="flex w-full sm:w-auto">
-                      <Button {...(action || {})} class="w-full sm:mb-0" />
-                    </div>
-                  ))
-                ) : (
-                  <Fragment set:html={actions} />
-                )}
-              </div>
-            )
-          }
+    <div class="py-10 md:py-14 lg:py-16">
+      <div class="mx-auto max-w-[80rem]">
+        <div class="grid items-start gap-10 text-center lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] lg:gap-16 lg:text-left xl:gap-20">
+          <div class="flex flex-col justify-start lg:pt-2">
+            {
+              tagline && (
+                <p
+                  class="text-base font-bold uppercase tracking-wide text-secondary motion-safe:animate-hero-fade dark:text-blue-200"
+                  set:html={tagline}
+                />
+              )
+            }
+            {
+              title && (
+                <h1
+                  class="mb-5 font-heading text-[clamp(3.4rem,7vw,5.4rem)] font-semibold leading-[1] tracking-[-0.02em] text-slate-900 motion-safe:animate-hero-fade lg:mb-6"
+                  set:html={title}
+                />
+              )
+            }
+            <div class="mx-auto max-w-[36rem] lg:mx-0">
+              {
+                subtitle && (
+                  <p
+                    class="mx-auto mb-7 max-w-[36rem] font-sans text-[clamp(1.2rem,2vw,1.6rem)] font-normal leading-[1.35] text-[rgb(39_44_52_/_.78)] motion-safe:animate-hero-fade lg:mx-0 lg:mb-7"
+                    set:html={subtitle}
+                  />
+                )
+              }
+              {
+                actions && (
+                  <div class="mx-auto flex max-w-xs flex-col flex-nowrap gap-3 motion-safe:animate-hero-fade sm:max-w-md sm:flex-row sm:justify-center sm:gap-4 lg:mx-0 lg:max-w-none lg:justify-start">
+                    {Array.isArray(actions) ? (
+                      actions.map((action) => (
+                        <div class="flex w-full sm:w-auto">
+                          <Button {...(action || {})} class="w-full sm:mb-0" />
+                        </div>
+                      ))
+                    ) : (
+                      <Fragment set:html={actions} />
+                    )}
+                  </div>
+                )
+              }
+            </div>
+          </div>
+          {content && (
+            <div class="relative lg:pt-3">
+              <div class="motion-safe:animate-hero-fade" set:html={content} />
+            </div>
+          )}
         </div>
-        {content && <Fragment set:html={content} />}
       </div>
       <div
         class="intersect-once intersect-no-queue intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
