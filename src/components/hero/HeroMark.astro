@@ -1,9 +1,13 @@
 ---
 import HeroMarkDesktop from './HeroMarkDesktop.astro';
 import HeroMarkMobile from './HeroMarkMobile.astro';
+import HeroMarkWide from './HeroMarkWide.astro';
 ---
 
 <div class="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
-  <HeroMarkDesktop />
+  <div class="hidden lg:block 2xl:hidden">
+    <HeroMarkDesktop />
+  </div>
+  <HeroMarkWide />
   <HeroMarkMobile />
 </div>
