@@ -1,6 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
+import HeroMark from '~/components/hero/HeroMark.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import Features3 from '~/components/widgets/Features3.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
@@ -32,6 +33,8 @@ const metadata = {
     <Fragment slot="title">AI-Phil Consulting</Fragment>
 
     <Fragment slot="subtitle">Don’t lose your bearings with AI.<br />Use it wisely.</Fragment>
+
+    <HeroMark slot="ornament" />
 
     <Fragment slot="content">
       <div class="mt-1 max-w-[34rem] font-sans text-[1.08rem] leading-[1.82] text-[rgb(39_44_52_/_.82)] sm:mt-2 lg:mt-0 lg:flex lg:h-full lg:max-w-[34rem] lg:flex-col">

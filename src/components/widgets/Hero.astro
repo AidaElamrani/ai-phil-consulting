@@ -1,7 +1,6 @@
 ---
 import Image from '~/components/common/Image.astro';
 import Button from '~/components/ui/Button.astro';
-import siteLogo from '~/assets/images/logo.svg';
 
 import type { Hero as Props } from '~/types';
 
@@ -13,6 +12,7 @@ const {
   content = await Astro.slots.render('content'),
   actions = await Astro.slots.render('actions'),
   image = await Astro.slots.render('image'),
+  ornament = await Astro.slots.render('ornament'),
 
   id,
   bg = await Astro.slots.render('bg'),
@@ -30,7 +30,14 @@ const {
     <div class="py-12 md:py-14 lg:py-16">
       <div class="mx-auto max-w-[80rem]">
         <div class="relative grid items-start gap-y-10 lg:grid-cols-[minmax(0,0.44fr)_minmax(0,0.56fr)] lg:gap-x-[clamp(4.5rem,7vw,5.625rem)]">
-          <div class="flex flex-col justify-start lg:items-end lg:pt-2 lg:text-right">
+          {
+            ornament && (
+              <div class="pointer-events-none absolute inset-0 overflow-visible" aria-hidden="true">
+                <Fragment set:html={ornament} />
+              </div>
+            )
+          }
+          <div class="relative z-10 flex flex-col justify-start lg:items-end lg:pt-2 lg:text-right">
             {
               tagline && (
                 <p
@@ -74,19 +81,8 @@ const {
             </div>
           </div>
           {content && (
-            <div class="relative lg:self-stretch lg:pt-3">
+            <div class="relative z-10 lg:self-stretch lg:pt-3">
               <div class="relative mx-auto w-fit max-w-full lg:mx-0 lg:h-full lg:w-full">
-                <div
-                  class="pointer-events-none absolute inset-0 flex items-center justify-center"
-                  aria-hidden="true"
-                >
-                  <img
-                    src={siteLogo.src}
-                    alt=""
-                    class="h-auto w-[125%] max-w-none -translate-y-[1%] opacity-[0.035] blur-[0.4px] sm:w-[122%] md:w-[124%] lg:w-[128%] sm:opacity-[0.04] lg:opacity-[0.045]"
-                    loading="eager"
-                  />
-                </div>
                 <div class="relative z-10 motion-safe:animate-hero-fade" set:html={content} />
               </div>
             </div>
