@@ -5,7 +5,7 @@ import HeroMark from '~/components/hero/HeroMark.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import Features3 from '~/components/widgets/Features3.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
-import { formatItems, homePillars, topicItems } from '~/data/site';
+import { formatItems, homeWisdoms, topicItems } from '~/data/site';
 import { getPermalink } from '~/utils/permalinks';
 
 const metadata = {
@@ -61,10 +61,10 @@ const metadata = {
   </Hero>
 
   <Features3
-    title="Three pillars"
-    subtitle="Independent and rigorous work for organisations looking beyond surface-level AI discourse."
+    title="Wisdom in the Age of AI"
+    subtitle="Orienting transformations within a broader constellation of knowledge."
     columns={3}
-    items={homePillars}
+    items={homeWisdoms}
     classes={{
       items: {
         panel: 'rounded-2xl border border-stone-200 bg-[rgba(255,255,255,0.72)] p-6 shadow-none',

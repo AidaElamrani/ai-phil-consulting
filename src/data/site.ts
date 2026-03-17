@@ -80,21 +80,22 @@ export const advisoryItems = [
   },
 ];
 
-export const homePillars = [
+export const homeWisdoms = [
   {
-    title: 'Independent expertise',
-    description: 'Careful analysis grounded in research rather than vendor narratives or trend cycles.',
+    title: 'Critical Thinking',
+    description: 'Humanity has accumulated a rich understanding of how knowledge and error are formed. Critical thinking begins with intellectual vigilance: ideas must be weighed carefully rather than accepted at face value, and tested against perspectives that challenge our assumptions.',
+    icon: 'tabler:world',
+  },
+  {
+    title: 'Interdisciplinary Perspectives',
+    description: 'When knowledge comes from isolated sources, ideas quickly converge into echo chambers. By mapping broader epistemic networks, interdisciplinary perspectives expand the space in which critical thinking can operate.',
     icon: 'tabler:shield-check',
   },
+  
   {
-    title: 'Interdisciplinary insight',
-    description: 'Philosophy, computer science, and social science brought into direct conversation.',
+    title: 'Independent Analysis',
+    description: 'Sound judgment requires intellectual independence. When ideas are critically examined and situated within a broader constellation of knowledge, it becomes possible to form conclusions free from institutional or ideological pressures.',
     icon: 'tabler:binary-tree-2',
-  },
-  {
-    title: 'Real-world engagement',
-    description: 'Work shaped by live organisational questions, public debate, and technological change.',
-    icon: 'tabler:world',
   },
 ];
 
