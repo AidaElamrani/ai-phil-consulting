@@ -1,0 +1,79 @@
+---
+import { Icon } from 'astro-icon/components';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import type { Features as Props } from '~/types';
+
+const {
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
+  tagline = await Astro.slots.render('tagline'),
+  items = [],
+  actions = [],
+  id,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render('bg'),
+} = Astro.props;
+---
+
+<WidgetWrapper id={id} isDark={isDark} containerClass={typeof classes?.container === 'string' ? classes.container : ''} bg={bg}>
+  <div class="grid gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-16 xl:gap-20">
+    <div class="max-w-xl">
+      {tagline && (
+        <p class="text-[0.72rem] font-semibold uppercase tracking-[0.26em] text-secondary/80" set:html={tagline} />
+      )}
+      {title && (
+        <h2
+          class="mt-4 font-heading text-3xl font-semibold leading-tight tracking-[-0.03em] text-heading sm:text-[2.55rem]"
+          set:html={title}
+        />
+      )}
+      {subtitle && (
+        <p
+          class="mt-6 max-w-2xl font-sans text-[1.05rem] leading-[1.95] text-[rgb(39_44_52_/_.78)]"
+          set:html={subtitle}
+        />
+      )}
+    </div>
+
+    {
+      items.length > 0 && (
+        <div class="border-t border-stone-200/80 lg:border-t-0">
+          {items.map(({ title: itemTitle, description, icon }, index) => (
+            <article
+              class:list={[
+                'grid gap-4 border-stone-200/75 py-7 first:pt-8 lg:grid-cols-[2.75rem_minmax(0,1fr)] lg:gap-5 lg:first:pt-0',
+                index !== items.length - 1 && 'border-b',
+              ]}
+            >
+              <div class="flex h-10 w-10 items-center justify-center rounded-full border border-stone-200/80 bg-white/65 text-primary/85">
+                {icon && <Icon name={icon} class="h-[1.15rem] w-[1.15rem]" />}
+              </div>
+              <div class="max-w-2xl">
+                {itemTitle && (
+                  <h3 class="font-heading text-[1.08rem] font-semibold tracking-[-0.02em] text-heading">{itemTitle}</h3>
+                )}
+                {description && (
+                  <p class="mt-2 text-[0.98rem] leading-[1.85] text-[rgb(39_44_52_/_.72)]" set:html={description} />
+                )}
+              </div>
+            </article>
+          ))}
+
+          {actions.length > 0 && (
+            <div class="mt-7 pt-3">
+              {actions.map((action) => (
+                <a
+                  href={action.href}
+                  class="inline-flex items-center rounded-full border border-stone-300 bg-white px-4 py-2 text-sm font-semibold tracking-[0.01em] text-heading transition hover:border-stone-400 hover:bg-stone-50"
+                >
+                  {action.text}
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+      )
+    }
+  </div>
+</WidgetWrapper>

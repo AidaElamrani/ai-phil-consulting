@@ -99,6 +99,21 @@ export const homeWisdoms = [
   },
 ];
 
+export const whatWeDoItems = [
+  {
+    title: 'Research',
+    icon: 'tabler:search',
+  },
+  {
+    title: 'Conferences & workshops',
+    icon: 'tabler:microphone-2',
+  },
+  {
+    title: 'Advisory reports',
+    icon: 'tabler:file-search',
+  },
+];
+
 export const valuesItems = [
   {
     title: 'Intellectual independence',
