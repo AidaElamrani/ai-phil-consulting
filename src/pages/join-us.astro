@@ -1,57 +1,740 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
-import Features2 from '~/components/widgets/Features2.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
-import { getPermalink } from '~/utils/permalinks';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import Button from '~/components/ui/Button.astro';
+import CheckboxGroup from '~/components/join/CheckboxGroup.astro';
 
 const metadata = {
   title: 'Join us',
 };
+
+const expertiseSections = [
+  {
+    title: 'Core technical & scientific',
+    options: [
+      { label: 'Computer science & AI', value: 'computer_science_ai' },
+      { label: 'Engineering & robotics', value: 'engineering_robotics' },
+      { label: 'Cognitive science & neuroscience', value: 'cognitive_science_neuroscience' },
+      { label: 'Natural sciences', value: 'natural_sciences' },
+    ],
+  },
+  {
+    title: 'Conceptual & societal',
+    options: [
+      { label: 'Philosophy & ethics', value: 'philosophy_ethics' },
+      { label: 'Social sciences', value: 'social_sciences' },
+      { label: 'Policy, governance & public affairs', value: 'policy_governance_public_affairs' },
+      { label: 'Law & regulation', value: 'law_regulation' },
+    ],
+  },
+  {
+    title: 'Economic & organisational',
+    options: [
+      { label: 'Business, strategy & innovation', value: 'business_strategy_innovation' },
+      { label: 'Finance & economics', value: 'finance_economics' },
+    ],
+  },
+  {
+    title: 'Human & cultural',
+    options: [
+      { label: 'Education & pedagogy', value: 'education_pedagogy' },
+      { label: 'Health, care & psychology', value: 'health_care_psychology' },
+      { label: 'Arts, design & creative practice', value: 'arts_design_creative_practice' },
+      { label: 'Media, entertainment & communication', value: 'media_entertainment_communication' },
+    ],
+  },
+  {
+    title: '',
+    options: [{ label: 'Other', value: 'other' }],
+  },
+];
+
+const professionalSituationOptions = [
+  { label: 'Employed (private sector)', value: 'employed_private_sector' },
+  { label: 'Employed (public sector / academia)', value: 'employed_public_sector_academia' },
+  { label: 'Independent / freelancer', value: 'independent_freelancer' },
+  { label: 'Consultant (via company)', value: 'consultant_via_company' },
+  { label: 'Founder / entrepreneur', value: 'founder_entrepreneur' },
+  { label: 'Student', value: 'student' },
+  { label: 'Between positions', value: 'between_positions' },
+  { label: 'Other', value: 'other' },
+];
+
+const contributionOptions = [
+  { label: 'Talks', value: 'talks' },
+  { label: 'Panels', value: 'panels' },
+  { label: 'Workshops', value: 'workshops' },
+  { label: 'Courses', value: 'courses' },
+  { label: 'Research', value: 'research' },
+  { label: 'Writing', value: 'writing' },
+  { label: 'Advisory', value: 'advisory' },
+  { label: 'Podcast / media', value: 'podcast_media' },
+  { label: 'Mentoring', value: 'mentoring' },
+  { label: 'Creative collaboration', value: 'creative_collaboration' },
+  { label: 'Other', value: 'other', excludeFromSelectAll: true },
+];
+
+const languageOptions = [
+  { label: 'English', value: 'english' },
+  { label: 'French', value: 'french' },
+  { label: 'Other', value: 'other' },
+];
 ---
 
 <Layout metadata={metadata}>
   <HeroText
     tagline="Join us"
-    title="Contribute expertise to talks, workshops, panels, and advisory work"
-    subtitle="AI-Phil Consulting invites academics, engineers, and professionals who want to contribute thoughtful expertise to public and organisational conversations about AI."
+    title="Join the network"
+    subtitle="Share your background, areas of expertise, and how you might like to contribute to future collaborations, events, or advisory work."
   />
 
-  <Features2
-    title="Who this is for"
-    columns={3}
-    items={[
-      {
-        title: 'Academics',
-        description:
-          'Researchers in philosophy, computer science, law, political theory, sociology, media studies, and related fields are welcome.',
-        icon: 'tabler:book-2',
-      },
-      {
-        title: 'Engineers',
-        description:
-          'Practitioners with direct experience of AI systems can help bring technical realities into dialogue with broader questions.',
-        icon: 'tabler:cpu',
-      },
-      {
-        title: 'Professionals',
-        description:
-          'People working in policy, culture, education, design, or organisational leadership may bring valuable perspectives and case experience.',
-        icon: 'tabler:briefcase',
-      },
-    ]}
-    classes={{
-      items: {
-        panel: 'rounded-2xl border border-stone-200 bg-[rgba(255,255,255,0.72)] p-6 shadow-none',
-        icon: 'w-10 h-10 mb-5 text-primary',
-      },
-    }}
-  />
+  <WidgetWrapper containerClass="pt-4 pb-20 md:pt-6">
+    <div class="mx-auto max-w-5xl space-y-8">
+      <div class="max-w-3xl">
+        <p class="text-[1.02rem] leading-8 text-stone-600">
+          Share a few details about your background, expertise, and how you might like to contribute. Feel free to skip optional fields.
+        </p>
+      </div>
 
-  <CallToAction
-    title="Interested in contributing?"
-    subtitle="If you would like to be considered for future talks, workshops, panels, or advisory collaborations, please get in touch with a short introduction to your area of expertise."
-    actions={[{ text: 'Contact', href: getPermalink('/contact') }]}
-    classes={{ container: 'pt-8 pb-20' }}
-  />
+      <form data-join-us-form class="space-y-6" method="post" action="">
+        <input type="hidden" name="submission[source]" value="join-us" />
+        <input type="hidden" name="submission[payload_json]" value="" data-structured-payload />
+
+        <section
+          id="about-you"
+          data-join-section
+          class="rounded-[2rem] border border-stone-200/90 bg-[rgba(255,255,255,0.76)] px-6 py-7 sm:px-8"
+        >
+          <div class="mb-6 space-y-2">
+            <p class="text-[0.72rem] font-semibold uppercase tracking-[0.26em] text-secondary/80">1. About you</p>
+            <h2 class="font-heading text-3xl tracking-tight text-stone-900">Identity and contact details</h2>
+            <p class="max-w-3xl text-[1.02rem] leading-8 text-stone-600">
+              A few basic details so we know who you are and how to reach you.
+            </p>
+          </div>
+
+          <div class="grid gap-5 md:grid-cols-2">
+            <div class="space-y-2">
+              <label for="identity-first-name" class="block text-sm font-medium text-stone-900">First name</label>
+              <input
+                id="identity-first-name"
+                name="identity[first_name]"
+                type="text"
+                autocomplete="given-name"
+                required
+                class="w-full rounded-2xl border border-stone-200 bg-white/90 px-4 py-3 text-sm text-stone-900 outline-none transition placeholder:text-stone-400 focus:border-secondary/40 focus:ring-4 focus:ring-secondary/10"
+              />
+            </div>
+            <div class="space-y-2">
+              <label for="identity-last-name" class="block text-sm font-medium text-stone-900">Last name</label>
+              <input
+                id="identity-last-name"
+                name="identity[last_name]"
+                type="text"
+                autocomplete="family-name"
+                required
+                class="w-full rounded-2xl border border-stone-200 bg-white/90 px-4 py-3 text-sm text-stone-900 outline-none transition placeholder:text-stone-400 focus:border-secondary/40 focus:ring-4 focus:ring-secondary/10"
+              />
+            </div>
+            <div class="space-y-2">
+              <label for="identity-email" class="block text-sm font-medium text-stone-900">Email</label>
+              <input
+                id="identity-email"
+                name="identity[email]"
+                type="email"
+                autocomplete="email"
+                required
+                class="w-full rounded-2xl border border-stone-200 bg-white/90 px-4 py-3 text-sm text-stone-900 outline-none transition placeholder:text-stone-400 focus:border-secondary/40 focus:ring-4 focus:ring-secondary/10"
+              />
+            </div>
+            <div class="space-y-2">
+              <label for="identity-phone" class="block text-sm font-medium text-stone-900"
+                >[Optional] Phone number</label
+              >
+              <input
+                id="identity-phone"
+                name="identity[phone_number]"
+                type="tel"
+                autocomplete="tel"
+                class="w-full rounded-2xl border border-stone-200 bg-white/90 px-4 py-3 text-sm text-stone-900 outline-none transition placeholder:text-stone-400 focus:border-secondary/40 focus:ring-4 focus:ring-secondary/10"
+              />
+            </div>
+            <div class="space-y-2">
+              <label for="identity-city" class="block text-sm font-medium text-stone-900">City</label>
+              <input
+                id="identity-city"
+                name="identity[city]"
+                type="text"
+                autocomplete="address-level2"
+                required
+                class="w-full rounded-2xl border border-stone-200 bg-white/90 px-4 py-3 text-sm text-stone-900 outline-none transition placeholder:text-stone-400 focus:border-secondary/40 focus:ring-4 focus:ring-secondary/10"
+              />
+            </div>
+            <div class="space-y-2">
+              <label for="identity-country" class="block text-sm font-medium text-stone-900">[Optional] Country</label>
+              <input
+                id="identity-country"
+                name="identity[country]"
+                type="text"
+                autocomplete="country-name"
+                class="w-full rounded-2xl border border-stone-200 bg-white/90 px-4 py-3 text-sm text-stone-900 outline-none transition placeholder:text-stone-400 focus:border-secondary/40 focus:ring-4 focus:ring-secondary/10"
+              />
+            </div>
+            <div class="space-y-2">
+              <label for="identity-institution" class="block text-sm font-medium text-stone-900">Institution</label>
+              <input
+                id="identity-institution"
+                name="identity[institution]"
+                type="text"
+                autocomplete="organization"
+                required
+                class="w-full rounded-2xl border border-stone-200 bg-white/90 px-4 py-3 text-sm text-stone-900 outline-none transition placeholder:text-stone-400 focus:border-secondary/40 focus:ring-4 focus:ring-secondary/10"
+              />
+            </div>
+            <div class="space-y-2">
+              <label for="identity-position" class="block text-sm font-medium text-stone-900">Position title</label>
+              <input
+                id="identity-position"
+                name="identity[position_title]"
+                type="text"
+                autocomplete="organization-title"
+                required
+                class="w-full rounded-2xl border border-stone-200 bg-white/90 px-4 py-3 text-sm text-stone-900 outline-none transition placeholder:text-stone-400 focus:border-secondary/40 focus:ring-4 focus:ring-secondary/10"
+              />
+            </div>
+            <div class="space-y-2">
+              <label for="identity-website" class="block text-sm font-medium text-stone-900">[Optional] Website</label>
+              <input
+                id="identity-website"
+                name="identity[website]"
+                type="url"
+                autocomplete="url"
+                placeholder="https://"
+                class="w-full rounded-2xl border border-stone-200 bg-white/90 px-4 py-3 text-sm text-stone-900 outline-none transition placeholder:text-stone-400 focus:border-secondary/40 focus:ring-4 focus:ring-secondary/10"
+              />
+            </div>
+            <div class="space-y-2">
+              <label for="identity-linkedin" class="block text-sm font-medium text-stone-900">[Optional] LinkedIn</label
+              >
+              <input
+                id="identity-linkedin"
+                name="identity[linkedin]"
+                type="url"
+                autocomplete="url"
+                placeholder="https://www.linkedin.com/in/..."
+                class="w-full rounded-2xl border border-stone-200 bg-white/90 px-4 py-3 text-sm text-stone-900 outline-none transition placeholder:text-stone-400 focus:border-secondary/40 focus:ring-4 focus:ring-secondary/10"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="expertise"
+          data-join-section
+          class="rounded-[2rem] border border-stone-200/90 bg-[rgba(255,255,255,0.76)] px-6 py-7 sm:px-8"
+        >
+          <div class="mb-6 space-y-2">
+            <p class="text-[0.72rem] font-semibold uppercase tracking-[0.26em] text-secondary/80">
+              2. Your areas of expertise
+            </p>
+            <h2 class="font-heading text-3xl tracking-tight text-stone-900">Domains of expertise</h2>
+            <p class="max-w-3xl text-[1.02rem] leading-8 text-stone-600">
+              Select all that apply. You can also add a few words to clarify your background or specialisation.
+            </p>
+          </div>
+
+          <CheckboxGroup
+            legend="Areas of expertise"
+            intro="Select all that apply."
+            groupKey="expertise-areas"
+            namePrefix="expertise[areas]"
+            sections={expertiseSections}
+            textFields={[
+              {
+                label: '[Optional] Tell us more',
+                name: 'expertise[details][specify_further]',
+                helper: 'Add any context that would help us understand your background more clearly.',
+              },
+            ]}
+          />
+        </section>
+
+        <section
+          id="professional-situation"
+          data-join-section
+          class="rounded-[2rem] border border-stone-200/90 bg-[rgba(255,255,255,0.76)] px-6 py-7 sm:px-8"
+        >
+          <div class="mb-6 space-y-2">
+            <p class="text-[0.72rem] font-semibold uppercase tracking-[0.26em] text-secondary/80">
+              3. Professional situation
+            </p>
+            <h2 class="font-heading text-3xl tracking-tight text-stone-900">Current professional situation</h2>
+            <p class="max-w-3xl text-[1.02rem] leading-8 text-stone-600">
+              Select all that apply, and add a short note if useful.
+            </p>
+          </div>
+
+          <CheckboxGroup
+            legend="Professional situation"
+            intro="Select all that apply."
+            groupKey="professional-situation"
+            namePrefix="employment[situation]"
+            options={professionalSituationOptions}
+            textFields={[
+              {
+                label: '[Optional] Tell us more',
+                name: 'employment[details][specify]',
+                helper: 'Add a short clarification if needed.',
+              },
+            ]}
+          />
+        </section>
+
+        <section
+          id="contribution"
+          data-join-section
+          class="rounded-[2rem] border border-stone-200/90 bg-[rgba(255,255,255,0.76)] px-6 py-7 sm:px-8"
+        >
+          <div class="mb-6 space-y-2">
+            <p class="text-[0.72rem] font-semibold uppercase tracking-[0.26em] text-secondary/80">
+              4. [Optional] How you’d like to contribute
+            </p>
+            <h2 class="font-heading text-3xl tracking-tight text-stone-900">Preferred formats</h2>
+            <p class="max-w-3xl text-[1.02rem] leading-8 text-stone-600">
+              Select any formats that interest you, if any.
+            </p>
+          </div>
+
+          <CheckboxGroup
+            legend="[Optional] Contribution formats"
+            intro="Select any formats that interest you."
+            groupKey="contribution-formats"
+            namePrefix="contribution[formats]"
+            options={contributionOptions}
+            showSelectAll={true}
+            textFields={[
+              {
+                label: '[Optional] Tell us more',
+                name: 'contribution[details][specify_further]',
+                helper: 'You can mention themes, audiences, or formats you particularly enjoy.',
+              },
+            ]}
+          />
+        </section>
+
+        <section
+          id="practical-information"
+          data-join-section
+          class="rounded-[2rem] border border-stone-200/90 bg-[rgba(255,255,255,0.76)] px-6 py-7 sm:px-8"
+        >
+          <div class="mb-6 space-y-2">
+            <p class="text-[0.72rem] font-semibold uppercase tracking-[0.26em] text-secondary/80">
+              5. [Optional] Practical information
+            </p>
+            <h2 class="font-heading text-3xl tracking-tight text-stone-900">Languages and availability</h2>
+            <p class="max-w-3xl text-[1.02rem] leading-8 text-stone-600">
+              A few practical details can help us understand what kinds of opportunities may be suitable.
+            </p>
+          </div>
+
+          <div class="space-y-6">
+            <CheckboxGroup
+              legend="[Optional] Languages"
+              groupKey="languages"
+              namePrefix="practical[languages]"
+              options={languageOptions}
+              textFields={[
+                {
+                  label: '[Optional] Other languages',
+                  name: 'practical[languages_other_detail]',
+                  helper: 'Add any other languages you would like us to know about.',
+                },
+              ]}
+            />
+
+            <div class="grid gap-6 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+              <fieldset class="space-y-4 rounded-[1.5rem] border border-stone-200/80 bg-white/70 p-5 sm:p-6">
+                <legend class="text-lg font-semibold tracking-tight text-stone-900"
+                  >[Optional] Travel availability</legend
+                >
+                <label class="flex cursor-pointer items-start gap-3 text-sm text-stone-700">
+                  <input
+                    id="practical-can-travel"
+                    name="practical[can_travel]"
+                    type="checkbox"
+                    value="true"
+                    class="mt-1 h-4 w-4 rounded border-stone-300 text-primary focus:ring-primary/30"
+                  />
+                  <span>
+                    <span class="block font-medium text-stone-900">Available to travel when needed</span>
+                    <span class="block text-stone-500">Leave unchecked if you prefer to contribute remotely.</span>
+                  </span>
+                </label>
+              </fieldset>
+
+              <fieldset class="space-y-4 rounded-[1.5rem] border border-stone-200/80 bg-white/70 p-5 sm:p-6">
+                <legend class="text-lg font-semibold tracking-tight text-stone-900"
+                  >[Optional] Availability level</legend
+                >
+                <div class="grid gap-3">
+                  <label
+                    class="flex cursor-pointer items-start gap-3 rounded-2xl border border-stone-200/80 bg-white/90 px-4 py-3 text-sm text-stone-700"
+                  >
+                    <input
+                      name="practical[availability_level]"
+                      type="radio"
+                      value="very_limited"
+                      class="mt-1 h-4 w-4 border-stone-300 text-primary focus:ring-primary/30"
+                    />
+                    <span>
+                      <span class="block font-medium text-stone-900">Very limited</span>
+                      <span class="block text-stone-500">Rare availability or only occasional exceptions.</span>
+                    </span>
+                  </label>
+                  <label
+                    class="flex cursor-pointer items-start gap-3 rounded-2xl border border-stone-200/80 bg-white/90 px-4 py-3 text-sm text-stone-700"
+                  >
+                    <input
+                      name="practical[availability_level]"
+                      type="radio"
+                      value="occasional"
+                      class="mt-1 h-4 w-4 border-stone-300 text-primary focus:ring-primary/30"
+                    />
+                    <span>
+                      <span class="block font-medium text-stone-900">Occasional</span>
+                      <span class="block text-stone-500">Open to selected opportunities during the year.</span>
+                    </span>
+                  </label>
+                  <label
+                    class="flex cursor-pointer items-start gap-3 rounded-2xl border border-stone-200/80 bg-white/90 px-4 py-3 text-sm text-stone-700"
+                  >
+                    <input
+                      name="practical[availability_level]"
+                      type="radio"
+                      value="moderate"
+                      class="mt-1 h-4 w-4 border-stone-300 text-primary focus:ring-primary/30"
+                    />
+                    <span>
+                      <span class="block font-medium text-stone-900">Moderate</span>
+                      <span class="block text-stone-500">Regular interest, depending on topic and format.</span>
+                    </span>
+                  </label>
+                  <label
+                    class="flex cursor-pointer items-start gap-3 rounded-2xl border border-stone-200/80 bg-white/90 px-4 py-3 text-sm text-stone-700"
+                  >
+                    <input
+                      name="practical[availability_level]"
+                      type="radio"
+                      value="active"
+                      class="mt-1 h-4 w-4 border-stone-300 text-primary focus:ring-primary/30"
+                    />
+                    <span>
+                      <span class="block font-medium text-stone-900">Active</span>
+                      <span class="block text-stone-500">Actively looking for relevant collaborations.</span>
+                    </span>
+                  </label>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="a-few-words"
+          data-join-section
+          class="rounded-[2rem] border border-stone-200/90 bg-[rgba(255,255,255,0.76)] px-6 py-7 sm:px-8"
+        >
+          <div class="mb-6 space-y-2">
+            <p class="text-[0.72rem] font-semibold uppercase tracking-[0.26em] text-secondary/80">
+              6. [Optional] A few words
+            </p>
+            <h2 class="font-heading text-3xl tracking-tight text-stone-900">A few words about you</h2>
+            <p class="max-w-3xl text-[1.02rem] leading-8 text-stone-600">
+              A few lines are enough if you would like to add some personal or professional context.
+            </p>
+          </div>
+
+          <div class="grid gap-5">
+            <div class="space-y-2">
+              <label for="narrative-short-bio" class="block text-sm font-medium text-stone-900"
+                >[Optional] Short bio</label
+              >
+              <textarea
+                id="narrative-short-bio"
+                name="narrative[short_bio]"
+                rows={4}
+                placeholder="A few lines are enough."
+                class="w-full rounded-[1.5rem] border border-stone-200 bg-white/90 px-4 py-3 text-sm text-stone-900 outline-none transition placeholder:text-stone-400 focus:border-secondary/40 focus:ring-4 focus:ring-secondary/10"
+              ></textarea>
+            </div>
+            <div class="space-y-2">
+              <label for="narrative-motivation" class="block text-sm font-medium text-stone-900"
+                >[Optional] Why would you like to join?</label
+              >
+              <textarea
+                id="narrative-motivation"
+                name="narrative[motivation]"
+                rows={4}
+                placeholder="A few lines are enough."
+                class="w-full rounded-[1.5rem] border border-stone-200 bg-white/90 px-4 py-3 text-sm text-stone-900 outline-none transition placeholder:text-stone-400 focus:border-secondary/40 focus:ring-4 focus:ring-secondary/10"
+              ></textarea>
+            </div>
+            <div class="space-y-2">
+              <label for="narrative-relevant-experience" class="block text-sm font-medium text-stone-900">
+                [Optional] Relevant experience
+              </label>
+              <textarea
+                id="narrative-relevant-experience"
+                name="narrative[relevant_experience]"
+                rows={4}
+                placeholder="A few lines are enough."
+                class="w-full rounded-[1.5rem] border border-stone-200 bg-white/90 px-4 py-3 text-sm text-stone-900 outline-none transition placeholder:text-stone-400 focus:border-secondary/40 focus:ring-4 focus:ring-secondary/10"
+              ></textarea>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="consent"
+          data-join-section
+          class="rounded-[2rem] border border-stone-200/90 bg-[rgba(255,255,255,0.76)] px-6 py-7 sm:px-8"
+        >
+          <div class="mb-6 space-y-2">
+            <p class="text-[0.72rem] font-semibold uppercase tracking-[0.26em] text-secondary/80">7. Consent</p>
+            <h2 class="font-heading text-3xl tracking-tight text-stone-900">Contact and storage permission</h2>
+            <p class="max-w-3xl text-[1.02rem] leading-8 text-stone-600">
+              We only ask for the permissions needed to review your submission and contact you when relevant.
+            </p>
+          </div>
+
+          <fieldset class="space-y-4 rounded-[1.5rem] border border-stone-200/80 bg-white/70 p-5 sm:p-6">
+            <legend class="sr-only">Consent</legend>
+
+            <label
+              class="flex cursor-pointer items-start gap-3 rounded-2xl border border-stone-200/80 bg-white/90 px-4 py-3 text-sm text-stone-700"
+            >
+              <input
+                id="consent-contact"
+                name="consent[contact_opportunities]"
+                type="checkbox"
+                value="true"
+                required
+                class="mt-1 h-4 w-4 rounded border-stone-300 text-primary focus:ring-primary/30"
+              />
+              <span>
+                <span class="block font-medium text-stone-900"
+                  >I agree to be contacted about relevant opportunities</span
+                >
+              </span>
+            </label>
+
+            <label
+              class="flex cursor-pointer items-start gap-3 rounded-2xl border border-stone-200/80 bg-white/90 px-4 py-3 text-sm text-stone-700"
+            >
+              <input
+                id="consent-storage"
+                name="consent[data_storage]"
+                type="checkbox"
+                value="true"
+                required
+                class="mt-1 h-4 w-4 rounded border-stone-300 text-primary focus:ring-primary/30"
+              />
+              <span>
+                <span class="block font-medium text-stone-900"
+                  >I agree that this information may be stored for this purpose</span
+                >
+              </span>
+            </label>
+          </fieldset>
+        </section>
+
+        <div class="rounded-[2rem] border border-stone-200/90 bg-[rgba(255,255,255,0.72)] px-6 py-6 sm:px-8">
+          <div class="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+            <div class="max-w-2xl space-y-2">
+              <h2 class="font-heading text-2xl tracking-tight text-stone-900">Submit your expression of interest</h2>
+              <p class="text-sm leading-7 text-stone-500">
+                We review each submission personally and may reach out when there is a relevant opportunity,
+                collaboration, or event.
+              </p>
+            </div>
+            <Button variant="primary" type="submit" class="min-w-[14rem] justify-center rounded-full px-6 py-3">
+              Submit
+            </Button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </WidgetWrapper>
+
+  <script is:inline>
+    (() => {
+      const form = document.querySelector('[data-join-us-form]');
+      if (!(form instanceof HTMLFormElement)) return;
+
+      const payloadField = form.querySelector('[data-structured-payload]');
+      const checkboxGroups = Array.from(form.querySelectorAll('[data-checkbox-group]'));
+
+      const syncAllToggle = (group) => {
+        const allToggle = group.querySelector('[data-all-toggle]');
+        const optionCheckboxes = Array.from(group.querySelectorAll('[data-option-checkbox]'));
+        const selectAllCheckboxes = optionCheckboxes.filter(
+          (checkbox) => checkbox instanceof HTMLInputElement && !checkbox.hasAttribute('data-exclude-select-all')
+        );
+
+        if (!(allToggle instanceof HTMLInputElement) || selectAllCheckboxes.length === 0) return;
+
+        const checkedCount = selectAllCheckboxes.filter((checkbox) => checkbox.checked).length;
+        allToggle.checked = checkedCount === selectAllCheckboxes.length;
+        allToggle.indeterminate = checkedCount > 0 && checkedCount < selectAllCheckboxes.length;
+      };
+
+      checkboxGroups.forEach((group) => {
+        const allToggle = group.querySelector('[data-all-toggle]');
+        const optionCheckboxes = Array.from(group.querySelectorAll('[data-option-checkbox]'));
+        const selectAllCheckboxes = optionCheckboxes.filter(
+          (checkbox) => checkbox instanceof HTMLInputElement && !checkbox.hasAttribute('data-exclude-select-all')
+        );
+
+        if (allToggle instanceof HTMLInputElement) {
+          allToggle.addEventListener('change', () => {
+            selectAllCheckboxes.forEach((checkbox) => {
+              if (checkbox instanceof HTMLInputElement) checkbox.checked = allToggle.checked;
+            });
+            syncAllToggle(group);
+            updateStructuredPayload();
+          });
+        }
+
+        optionCheckboxes.forEach((checkbox) => {
+          if (!(checkbox instanceof HTMLInputElement)) return;
+          checkbox.addEventListener('change', () => {
+            syncAllToggle(group);
+            updateStructuredPayload();
+          });
+        });
+
+        syncAllToggle(group);
+      });
+
+      const getValue = (name) => {
+        const field = form.elements.namedItem(name);
+        if (field instanceof RadioNodeList) return field.value || '';
+        if (
+          field instanceof HTMLInputElement ||
+          field instanceof HTMLTextAreaElement ||
+          field instanceof HTMLSelectElement
+        ) {
+          return field.value.trim();
+        }
+        return '';
+      };
+
+      const getChecked = (name) => {
+        const field = form.elements.namedItem(name);
+        if (field instanceof HTMLInputElement) return field.checked;
+        return false;
+      };
+
+      function updateStructuredPayload() {
+        if (!(payloadField instanceof HTMLInputElement)) return;
+
+        const payload = {
+          identity: {
+            first_name: getValue('identity[first_name]'),
+            last_name: getValue('identity[last_name]'),
+            email: getValue('identity[email]'),
+            phone_number: getValue('identity[phone_number]'),
+            city: getValue('identity[city]'),
+            country: getValue('identity[country]'),
+            institution: getValue('identity[institution]'),
+            position_title: getValue('identity[position_title]'),
+            website: getValue('identity[website]'),
+            linkedin: getValue('identity[linkedin]'),
+          },
+          expertise: {
+            areas: {
+              computer_science_ai: getChecked('expertise[areas][computer_science_ai]'),
+              engineering_robotics: getChecked('expertise[areas][engineering_robotics]'),
+              cognitive_science_neuroscience: getChecked('expertise[areas][cognitive_science_neuroscience]'),
+              natural_sciences: getChecked('expertise[areas][natural_sciences]'),
+              philosophy_ethics: getChecked('expertise[areas][philosophy_ethics]'),
+              social_sciences: getChecked('expertise[areas][social_sciences]'),
+              policy_governance_public_affairs: getChecked('expertise[areas][policy_governance_public_affairs]'),
+              law_regulation: getChecked('expertise[areas][law_regulation]'),
+              business_strategy_innovation: getChecked('expertise[areas][business_strategy_innovation]'),
+              finance_economics: getChecked('expertise[areas][finance_economics]'),
+              education_pedagogy: getChecked('expertise[areas][education_pedagogy]'),
+              health_care_psychology: getChecked('expertise[areas][health_care_psychology]'),
+              arts_design_creative_practice: getChecked('expertise[areas][arts_design_creative_practice]'),
+              media_entertainment_communication: getChecked('expertise[areas][media_entertainment_communication]'),
+              other: getChecked('expertise[areas][other]'),
+            },
+            details: {
+              specify_further: getValue('expertise[details][specify_further]'),
+            },
+          },
+          employment: {
+            situation: {
+              employed_private_sector: getChecked('employment[situation][employed_private_sector]'),
+              employed_public_sector_academia: getChecked('employment[situation][employed_public_sector_academia]'),
+              independent_freelancer: getChecked('employment[situation][independent_freelancer]'),
+              consultant_via_company: getChecked('employment[situation][consultant_via_company]'),
+              founder_entrepreneur: getChecked('employment[situation][founder_entrepreneur]'),
+              student: getChecked('employment[situation][student]'),
+              between_positions: getChecked('employment[situation][between_positions]'),
+              other: getChecked('employment[situation][other]'),
+            },
+            details: {
+              specify: getValue('employment[details][specify]'),
+            },
+          },
+          contribution: {
+            formats: {
+              talks: getChecked('contribution[formats][talks]'),
+              panels: getChecked('contribution[formats][panels]'),
+              workshops: getChecked('contribution[formats][workshops]'),
+              courses: getChecked('contribution[formats][courses]'),
+              research: getChecked('contribution[formats][research]'),
+              writing: getChecked('contribution[formats][writing]'),
+              advisory: getChecked('contribution[formats][advisory]'),
+              podcast_media: getChecked('contribution[formats][podcast_media]'),
+              mentoring: getChecked('contribution[formats][mentoring]'),
+              creative_collaboration: getChecked('contribution[formats][creative_collaboration]'),
+              other: getChecked('contribution[formats][other]'),
+            },
+            details: {
+              specify_further: getValue('contribution[details][specify_further]'),
+            },
+          },
+          practical: {
+            languages: {
+              english: getChecked('practical[languages][english]'),
+              french: getChecked('practical[languages][french]'),
+              other: getChecked('practical[languages][other]'),
+            },
+            languages_other_detail: getValue('practical[languages_other_detail]'),
+            can_travel: getChecked('practical[can_travel]'),
+            availability_level: getValue('practical[availability_level]'),
+          },
+          narrative: {
+            short_bio: getValue('narrative[short_bio]'),
+            motivation: getValue('narrative[motivation]'),
+            relevant_experience: getValue('narrative[relevant_experience]'),
+          },
+          consent: {
+            contact_opportunities: getChecked('consent[contact_opportunities]'),
+            data_storage: getChecked('consent[data_storage]'),
+          },
+        };
+
+        payloadField.value = JSON.stringify(payload);
+      }
+
+      form.addEventListener('input', updateStructuredPayload);
+      form.addEventListener('change', updateStructuredPayload);
+      form.addEventListener('submit', updateStructuredPayload);
+      updateStructuredPayload();
+    })();
+  </script>
 </Layout>

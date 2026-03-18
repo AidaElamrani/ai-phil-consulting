@@ -1,0 +1,166 @@
+---
+interface CheckboxOption {
+  label: string;
+  value: string;
+  description?: string;
+  excludeFromSelectAll?: boolean;
+}
+
+interface CheckboxSection {
+  title: string;
+  options: CheckboxOption[];
+}
+
+interface TextField {
+  label: string;
+  name: string;
+  placeholder?: string;
+  helper?: string;
+}
+
+interface Props {
+  legend: string;
+  intro?: string;
+  groupKey: string;
+  namePrefix: string;
+  options?: CheckboxOption[];
+  sections?: CheckboxSection[];
+  textFields?: TextField[];
+  showSelectAll?: boolean;
+}
+
+const {
+  legend,
+  intro,
+  groupKey,
+  namePrefix,
+  options = [],
+  sections = [],
+  textFields = [],
+  showSelectAll = false,
+} = Astro.props;
+
+const slugify = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/&/g, 'and')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+
+const groupId = slugify(groupKey);
+---
+
+<fieldset
+  class="space-y-6 rounded-[1.5rem] border border-stone-200/80 bg-white/70 p-5 sm:p-6"
+  data-checkbox-group
+  data-group-key={groupKey}
+>
+  <legend class="text-lg font-semibold tracking-tight text-stone-900">{legend}</legend>
+  {intro && <p class="max-w-2xl text-sm leading-7 text-stone-600">{intro}</p>}
+
+  {
+    showSelectAll && (
+      <div class="rounded-2xl border border-stone-200/80 bg-stone-50/80 p-4">
+        <label class="flex cursor-pointer items-start gap-3 text-sm text-stone-700">
+          <input
+            id={`${groupId}-all`}
+            type="checkbox"
+            data-all-toggle
+            class="mt-1 h-4 w-4 rounded border-stone-300 text-primary focus:ring-primary/30"
+          />
+          <span>
+            <span class="block font-medium text-stone-900">All</span>
+            <span class="block text-stone-500">Shortcut to select every item in this section.</span>
+          </span>
+        </label>
+      </div>
+    )
+  }
+
+  {
+    sections.length > 0 ? (
+      <div class="space-y-5">
+        {sections.map((section) => (
+          <div class="space-y-3">
+            {section.title && (
+              <h4 class="text-sm font-semibold uppercase tracking-[0.22em] text-secondary/80">{section.title}</h4>
+            )}
+            <div class="grid gap-3 md:grid-cols-2">
+              {section.options.map((option) => {
+                const optionId = `${groupId}-${slugify(option.value)}`;
+
+                return (
+                  <label class="flex min-h-[4.5rem] cursor-pointer items-start gap-3 rounded-2xl border border-stone-200/80 bg-white/85 px-4 py-3 text-sm text-stone-700 transition hover:border-secondary/30 hover:bg-white">
+                    <input
+                      id={optionId}
+                      type="checkbox"
+                      name={`${namePrefix}[${option.value}]`}
+                      value="true"
+                      data-option-checkbox
+                      {...(option.excludeFromSelectAll ? { 'data-exclude-select-all': 'true' } : {})}
+                      class="mt-1 h-4 w-4 rounded border-stone-300 text-primary focus:ring-primary/30"
+                    />
+                    <span class="space-y-1">
+                      <span class="block font-medium text-stone-900">{option.label}</span>
+                      {option.description && <span class="block text-stone-500">{option.description}</span>}
+                    </span>
+                  </label>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+    ) : (
+      <div class="grid gap-3 md:grid-cols-2">
+        {options.map((option) => {
+          const optionId = `${groupId}-${slugify(option.value)}`;
+
+          return (
+            <label class="flex min-h-[4.5rem] cursor-pointer items-start gap-3 rounded-2xl border border-stone-200/80 bg-white/85 px-4 py-3 text-sm text-stone-700 transition hover:border-secondary/30 hover:bg-white">
+              <input
+                id={optionId}
+                type="checkbox"
+                name={`${namePrefix}[${option.value}]`}
+                value="true"
+                data-option-checkbox
+                {...(option.excludeFromSelectAll ? { 'data-exclude-select-all': 'true' } : {})}
+                class="mt-1 h-4 w-4 rounded border-stone-300 text-primary focus:ring-primary/30"
+              />
+              <span class="space-y-1">
+                <span class="block font-medium text-stone-900">{option.label}</span>
+                {option.description && <span class="block text-stone-500">{option.description}</span>}
+              </span>
+            </label>
+          );
+        })}
+      </div>
+    )
+  }
+
+  {
+    textFields.length > 0 && (
+      <div class="grid gap-5 md:grid-cols-2">
+        {textFields.map((field) => {
+          const fieldId = `${groupId}-${slugify(field.name)}`;
+
+          return (
+            <div class="space-y-2">
+              <label for={fieldId} class="block text-sm font-medium text-stone-900">
+                {field.label}
+              </label>
+              <input
+                id={fieldId}
+                name={field.name}
+                type="text"
+                placeholder={field.placeholder}
+                class="w-full rounded-2xl border border-stone-200 bg-white/90 px-4 py-3 text-sm text-stone-900 outline-none transition placeholder:text-stone-400 focus:border-secondary/40 focus:ring-4 focus:ring-secondary/10"
+              />
+              {field.helper && <p class="text-sm leading-6 text-stone-500">{field.helper}</p>}
+            </div>
+          );
+        })}
+      </div>
+    )
+  }
+</fieldset>
