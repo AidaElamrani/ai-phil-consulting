@@ -10,6 +10,7 @@ const metadata = {
 
 const conferenceItems = [
   {
+    id: 'talks',
     title: 'Talks',
     icon: 'tabler:microphone-2',
     description:
@@ -17,6 +18,7 @@ const conferenceItems = [
     chips: ['Duration: 10 to 90 minutes', 'Format: presentation + Q&A', 'Best for: conferences, seminars, public events, training'],
   },
   {
+    id: 'panels',
     title: 'Panels',
     icon: 'tabler:users-group',
     description:
@@ -28,6 +30,7 @@ const conferenceItems = [
     ],
   },
   {
+    id: 'workshops',
     title: 'Workshops',
     icon: 'tabler:tool',
     description:
@@ -42,6 +45,7 @@ const conferenceItems = [
 
 const advisoryItems = [
   {
+    id: 'advisory',
     title: 'Exploratory Advisory',
     icon: 'tabler:message-circle',
     description:
@@ -71,10 +75,10 @@ const advisoryItems = [
   <HeroText
     tagline="Services"
     title="Wisdom, applied consciously to AI."
-    subtitle="Each question calls for a different approach.<br />Our work is organised into a set of formats — which we combine and adapt to each situation."
+    subtitle="Each question calls for a different approach.<br />We combine from these formats and adapt to each situation."
   />
 
-  <section class="px-4 py-10 sm:px-6 sm:py-12 lg:py-14">
+  <section id="research" class="px-4 py-10 sm:px-6 sm:py-12 lg:py-14">
     <div class="mx-auto max-w-5xl">
       <div class="rounded-[2rem] border border-stone-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.72),rgba(255,255,255,0.5))] px-6 py-8 shadow-[0_18px_50px_rgba(27,31,36,0.04)] sm:px-8 sm:py-10 lg:px-10 lg:py-12">
         <div class="grid gap-10 lg:grid-cols-[minmax(0,1.45fr)_minmax(18rem,0.9fr)] lg:gap-14">
@@ -152,7 +156,7 @@ const advisoryItems = [
       <div class="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {
           conferenceItems.map((item) => (
-            <article class="group flex h-full flex-col rounded-[1.75rem] border border-stone-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.8),rgba(255,255,255,0.64))] p-7 shadow-[0_14px_32px_rgba(27,31,36,0.035)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(27,31,36,0.07)]">
+            <article id={item.id} class="group flex h-full flex-col rounded-[1.75rem] border border-stone-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.8),rgba(255,255,255,0.64))] p-7 shadow-[0_14px_32px_rgba(27,31,36,0.035)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(27,31,36,0.07)]">
               <div class="flex h-12 w-12 items-center justify-center rounded-full border border-stone-200/80 bg-stone-50/80 text-muted transition-colors duration-200 group-hover:text-accent">
                 <Icon name={item.icon} class="h-7 w-7" />
               </div>
@@ -189,7 +193,7 @@ const advisoryItems = [
       <div class="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {
           advisoryItems.map((item) => (
-            <article class="group flex h-full flex-col rounded-[1.75rem] border border-stone-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.82),rgba(255,255,255,0.68))] p-7 shadow-[0_14px_32px_rgba(27,31,36,0.035)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(27,31,36,0.07)]">
+            <article id={item.id} class="group flex h-full flex-col rounded-[1.75rem] border border-stone-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.82),rgba(255,255,255,0.68))] p-7 shadow-[0_14px_32px_rgba(27,31,36,0.035)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(27,31,36,0.07)]">
               <div class="flex h-12 w-12 items-center justify-center rounded-full border border-stone-200/80 bg-stone-50/80 text-muted transition-colors duration-200 group-hover:text-accent">
                 <Icon name={item.icon} class="h-7 w-7" />
               </div>
