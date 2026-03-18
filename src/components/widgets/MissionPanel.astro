@@ -1,0 +1,26 @@
+---
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import type { Widget } from '~/types';
+
+interface Props extends Widget {
+  title?: string;
+}
+
+const { title = await Astro.slots.render('title'), id, isDark = false, classes = {}, bg = await Astro.slots.render('bg') } =
+  Astro.props;
+---
+
+<WidgetWrapper id={id} isDark={isDark} containerClass={classes?.container ?? ''} bg={bg}>
+  <div class="mx-auto max-w-4xl rounded-[1.75rem] border border-stone-200/90 bg-[rgba(255,255,255,0.7)] px-6 py-8 shadow-none sm:px-8 sm:py-10 lg:px-10">
+    {title && <p class="text-[0.72rem] font-semibold uppercase tracking-[0.26em] text-secondary/80" set:html={title} />}
+    <div class="mt-5 max-w-3xl space-y-5 font-sans text-[1.06rem] leading-[1.95] text-[rgb(39_44_52_/_.8)]">
+      <p>AI is evolving rapidly, while our ways of understanding and discussing it struggle to keep pace.<br />
+
+Important questions are often simplified, avoided, or addressed within constraints that limit how they can be expressed.<br />
+
+At the same time, a vast amount of expertise exists — across disciplines — that remains underutilized in public and organizational decision-making.<br />
+
+AI-Phil Consulting exists to bridge this gap: to bring forward clear, rigorous, and responsible insight at a time when it is most needed.</p>
+    </div>
+  </div>
+</WidgetWrapper>

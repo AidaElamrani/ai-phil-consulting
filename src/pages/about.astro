@@ -1,6 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
+import MissionPanel from '~/components/widgets/MissionPanel.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import { valuesItems } from '~/data/site';
@@ -17,6 +18,8 @@ const metadata = {
     title="The Parisian studio to engage wisely with AI"
     subtitle="AI-Phil Consulting was founded and is coordinated by Aïda Elamrani. It combines philosophy, science, and AI expertise in work designed for organisations seeking intellectual clarity rather than ready-made talking points."
   />
+
+  <MissionPanel title="Mission" classes={{ container: 'pt-2 md:pt-4 lg:pt-6 pb-6 md:pb-8' }} />
 
   <Features2
     title="How the consultancy is organised"

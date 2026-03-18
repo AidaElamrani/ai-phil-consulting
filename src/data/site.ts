@@ -93,7 +93,7 @@ export const homeWisdoms = [
   },
   
   {
-    title: 'Independent Analysis',
+    title: 'Freedom of Inquiry',
     description: 'Sound judgment requires intellectual independence. When ideas are critically examined and situated within a broader constellation of knowledge, it becomes possible to form conclusions free from institutional or ideological pressures.',
     icon: 'tabler:binary-tree-2',
   },
@@ -101,7 +101,7 @@ export const homeWisdoms = [
 
 export const whatWeDoItems = [
   {
-    title: 'Research',
+    title: 'Research insights',
     icon: 'tabler:search',
   },
   {
