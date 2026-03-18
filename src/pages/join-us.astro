@@ -93,13 +93,15 @@ const languageOptions = [
     <div class="mx-auto max-w-5xl space-y-8">
       <div class="max-w-3xl">
         <p class="text-[1.02rem] leading-8 text-stone-600">
-          Share a few details about your background, expertise, and how you might like to contribute. Feel free to skip optional fields.
+          Share a few details about your background, expertise, and how you might like to contribute. Feel free to skip
+          optional fields.
         </p>
       </div>
 
       <form data-join-us-form class="space-y-6" method="post" action="">
         <input type="hidden" name="submission[source]" value="join-us" />
         <input type="hidden" name="submission[payload_json]" value="" data-structured-payload />
+        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
 
         <section
           id="about-you"
@@ -557,8 +559,20 @@ const languageOptions = [
                 We review each submission personally and may reach out when there is a relevant opportunity,
                 collaboration, or event.
               </p>
+              <p
+                data-submit-status
+                class="hidden rounded-2xl border px-4 py-3 text-sm leading-7"
+                role="status"
+                aria-live="polite"
+              >
+              </p>
             </div>
-            <Button variant="primary" type="submit" class="min-w-[14rem] justify-center rounded-full px-6 py-3">
+            <Button
+              variant="primary"
+              type="submit"
+              class="min-w-[14rem] justify-center rounded-full px-6 py-3"
+              data-submit-button
+            >
               Submit
             </Button>
           </div>
@@ -569,11 +583,42 @@ const languageOptions = [
 
   <script is:inline>
     (() => {
+      const WEB3FORMS_KEY = 'bf50f0c3-d0e7-476b-a944-5ca64895f99e';
       const form = document.querySelector('[data-join-us-form]');
       if (!(form instanceof HTMLFormElement)) return;
 
       const payloadField = form.querySelector('[data-structured-payload]');
       const checkboxGroups = Array.from(form.querySelectorAll('[data-checkbox-group]'));
+      const submitButton = form.querySelector('[data-submit-button]');
+      const submitStatus = form.querySelector('[data-submit-status]');
+      const defaultButtonLabel = submitButton?.textContent?.trim() || 'Submit';
+
+      const setSubmitState = ({ submitting = false, tone = 'neutral', message = '' } = {}) => {
+        form.setAttribute('aria-busy', submitting ? 'true' : 'false');
+
+        if (submitButton instanceof HTMLButtonElement) {
+          submitButton.disabled = submitting;
+          submitButton.textContent = submitting ? 'Submitting...' : defaultButtonLabel;
+        }
+
+        if (!(submitStatus instanceof HTMLElement)) return;
+
+        if (!message) {
+          submitStatus.textContent = '';
+          submitStatus.className = 'hidden rounded-2xl border px-4 py-3 text-sm leading-7';
+          return;
+        }
+
+        const toneClass =
+          tone === 'success'
+            ? 'border-emerald-200 bg-emerald-50/80 text-emerald-800'
+            : tone === 'error'
+              ? 'border-red-200 bg-red-50/80 text-red-800'
+              : 'border-stone-200 bg-white/90 text-stone-600';
+
+        submitStatus.textContent = message;
+        submitStatus.className = `rounded-2xl border px-4 py-3 text-sm leading-7 ${toneClass}`;
+      };
 
       const syncAllToggle = (group) => {
         const allToggle = group.querySelector('[data-all-toggle]');
@@ -617,6 +662,140 @@ const languageOptions = [
         syncAllToggle(group);
       });
 
+      const getStructuredPayload = () => ({
+        identity: {
+          first_name: getValue('identity[first_name]'),
+          last_name: getValue('identity[last_name]'),
+          email: getValue('identity[email]'),
+          phone_number: getValue('identity[phone_number]'),
+          city: getValue('identity[city]'),
+          country: getValue('identity[country]'),
+          institution: getValue('identity[institution]'),
+          position_title: getValue('identity[position_title]'),
+          website: getValue('identity[website]'),
+          linkedin: getValue('identity[linkedin]'),
+        },
+        expertise: {
+          areas: {
+            computer_science_ai: getChecked('expertise[areas][computer_science_ai]'),
+            engineering_robotics: getChecked('expertise[areas][engineering_robotics]'),
+            cognitive_science_neuroscience: getChecked('expertise[areas][cognitive_science_neuroscience]'),
+            natural_sciences: getChecked('expertise[areas][natural_sciences]'),
+            philosophy_ethics: getChecked('expertise[areas][philosophy_ethics]'),
+            social_sciences: getChecked('expertise[areas][social_sciences]'),
+            policy_governance_public_affairs: getChecked('expertise[areas][policy_governance_public_affairs]'),
+            law_regulation: getChecked('expertise[areas][law_regulation]'),
+            business_strategy_innovation: getChecked('expertise[areas][business_strategy_innovation]'),
+            finance_economics: getChecked('expertise[areas][finance_economics]'),
+            education_pedagogy: getChecked('expertise[areas][education_pedagogy]'),
+            health_care_psychology: getChecked('expertise[areas][health_care_psychology]'),
+            arts_design_creative_practice: getChecked('expertise[areas][arts_design_creative_practice]'),
+            media_entertainment_communication: getChecked('expertise[areas][media_entertainment_communication]'),
+            other: getChecked('expertise[areas][other]'),
+          },
+          details: {
+            specify_further: getValue('expertise[details][specify_further]'),
+          },
+        },
+        employment: {
+          situation: {
+            employed_private_sector: getChecked('employment[situation][employed_private_sector]'),
+            employed_public_sector_academia: getChecked('employment[situation][employed_public_sector_academia]'),
+            independent_freelancer: getChecked('employment[situation][independent_freelancer]'),
+            consultant_via_company: getChecked('employment[situation][consultant_via_company]'),
+            founder_entrepreneur: getChecked('employment[situation][founder_entrepreneur]'),
+            student: getChecked('employment[situation][student]'),
+            between_positions: getChecked('employment[situation][between_positions]'),
+            other: getChecked('employment[situation][other]'),
+          },
+          details: {
+            specify: getValue('employment[details][specify]'),
+          },
+        },
+        contribution: {
+          formats: {
+            talks: getChecked('contribution[formats][talks]'),
+            panels: getChecked('contribution[formats][panels]'),
+            workshops: getChecked('contribution[formats][workshops]'),
+            courses: getChecked('contribution[formats][courses]'),
+            research: getChecked('contribution[formats][research]'),
+            writing: getChecked('contribution[formats][writing]'),
+            advisory: getChecked('contribution[formats][advisory]'),
+            podcast_media: getChecked('contribution[formats][podcast_media]'),
+            mentoring: getChecked('contribution[formats][mentoring]'),
+            creative_collaboration: getChecked('contribution[formats][creative_collaboration]'),
+            other: getChecked('contribution[formats][other]'),
+          },
+          details: {
+            specify_further: getValue('contribution[details][specify_further]'),
+          },
+        },
+        practical: {
+          languages: {
+            english: getChecked('practical[languages][english]'),
+            french: getChecked('practical[languages][french]'),
+            other: getChecked('practical[languages][other]'),
+          },
+          languages_other_detail: getValue('practical[languages_other_detail]'),
+          can_travel: getChecked('practical[can_travel]'),
+          availability_level: getValue('practical[availability_level]'),
+        },
+        narrative: {
+          short_bio: getValue('narrative[short_bio]'),
+          motivation: getValue('narrative[motivation]'),
+          relevant_experience: getValue('narrative[relevant_experience]'),
+        },
+        consent: {
+          contact_opportunities: getChecked('consent[contact_opportunities]'),
+          data_storage: getChecked('consent[data_storage]'),
+        },
+      });
+
+      const serializeJoinUsForm = (structuredPayload) => {
+        const rawEntries = Object.fromEntries(new FormData(form).entries());
+        const firstName = structuredPayload.identity.first_name;
+        const lastName = structuredPayload.identity.last_name;
+        const fullName = [firstName, lastName].filter(Boolean).join(' ');
+
+        return {
+          access_key: WEB3FORMS_KEY,
+          subject: fullName ? `Join Us — ${fullName}` : 'Join Us',
+          from_name: 'AI-Phil Join Us',
+          botcheck: String(rawEntries.botcheck || ''),
+          first_name: firstName,
+          last_name: lastName,
+          email: structuredPayload.identity.email,
+          identity: structuredPayload.identity,
+          expertise: structuredPayload.expertise,
+          employment: structuredPayload.employment,
+          contribution: structuredPayload.contribution,
+          practical: structuredPayload.practical,
+          narrative: structuredPayload.narrative,
+          consent: structuredPayload.consent,
+          payload_json: JSON.stringify(structuredPayload),
+          ...rawEntries,
+        };
+      };
+
+      const submitJoinUs = async (formData) => {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+          throw new Error(result.message || 'Submission failed');
+        }
+
+        return result;
+      };
+
       const getValue = (name) => {
         const field = form.elements.namedItem(name);
         if (field instanceof RadioNodeList) return field.value || '';
@@ -639,101 +818,42 @@ const languageOptions = [
       function updateStructuredPayload() {
         if (!(payloadField instanceof HTMLInputElement)) return;
 
-        const payload = {
-          identity: {
-            first_name: getValue('identity[first_name]'),
-            last_name: getValue('identity[last_name]'),
-            email: getValue('identity[email]'),
-            phone_number: getValue('identity[phone_number]'),
-            city: getValue('identity[city]'),
-            country: getValue('identity[country]'),
-            institution: getValue('identity[institution]'),
-            position_title: getValue('identity[position_title]'),
-            website: getValue('identity[website]'),
-            linkedin: getValue('identity[linkedin]'),
-          },
-          expertise: {
-            areas: {
-              computer_science_ai: getChecked('expertise[areas][computer_science_ai]'),
-              engineering_robotics: getChecked('expertise[areas][engineering_robotics]'),
-              cognitive_science_neuroscience: getChecked('expertise[areas][cognitive_science_neuroscience]'),
-              natural_sciences: getChecked('expertise[areas][natural_sciences]'),
-              philosophy_ethics: getChecked('expertise[areas][philosophy_ethics]'),
-              social_sciences: getChecked('expertise[areas][social_sciences]'),
-              policy_governance_public_affairs: getChecked('expertise[areas][policy_governance_public_affairs]'),
-              law_regulation: getChecked('expertise[areas][law_regulation]'),
-              business_strategy_innovation: getChecked('expertise[areas][business_strategy_innovation]'),
-              finance_economics: getChecked('expertise[areas][finance_economics]'),
-              education_pedagogy: getChecked('expertise[areas][education_pedagogy]'),
-              health_care_psychology: getChecked('expertise[areas][health_care_psychology]'),
-              arts_design_creative_practice: getChecked('expertise[areas][arts_design_creative_practice]'),
-              media_entertainment_communication: getChecked('expertise[areas][media_entertainment_communication]'),
-              other: getChecked('expertise[areas][other]'),
-            },
-            details: {
-              specify_further: getValue('expertise[details][specify_further]'),
-            },
-          },
-          employment: {
-            situation: {
-              employed_private_sector: getChecked('employment[situation][employed_private_sector]'),
-              employed_public_sector_academia: getChecked('employment[situation][employed_public_sector_academia]'),
-              independent_freelancer: getChecked('employment[situation][independent_freelancer]'),
-              consultant_via_company: getChecked('employment[situation][consultant_via_company]'),
-              founder_entrepreneur: getChecked('employment[situation][founder_entrepreneur]'),
-              student: getChecked('employment[situation][student]'),
-              between_positions: getChecked('employment[situation][between_positions]'),
-              other: getChecked('employment[situation][other]'),
-            },
-            details: {
-              specify: getValue('employment[details][specify]'),
-            },
-          },
-          contribution: {
-            formats: {
-              talks: getChecked('contribution[formats][talks]'),
-              panels: getChecked('contribution[formats][panels]'),
-              workshops: getChecked('contribution[formats][workshops]'),
-              courses: getChecked('contribution[formats][courses]'),
-              research: getChecked('contribution[formats][research]'),
-              writing: getChecked('contribution[formats][writing]'),
-              advisory: getChecked('contribution[formats][advisory]'),
-              podcast_media: getChecked('contribution[formats][podcast_media]'),
-              mentoring: getChecked('contribution[formats][mentoring]'),
-              creative_collaboration: getChecked('contribution[formats][creative_collaboration]'),
-              other: getChecked('contribution[formats][other]'),
-            },
-            details: {
-              specify_further: getValue('contribution[details][specify_further]'),
-            },
-          },
-          practical: {
-            languages: {
-              english: getChecked('practical[languages][english]'),
-              french: getChecked('practical[languages][french]'),
-              other: getChecked('practical[languages][other]'),
-            },
-            languages_other_detail: getValue('practical[languages_other_detail]'),
-            can_travel: getChecked('practical[can_travel]'),
-            availability_level: getValue('practical[availability_level]'),
-          },
-          narrative: {
-            short_bio: getValue('narrative[short_bio]'),
-            motivation: getValue('narrative[motivation]'),
-            relevant_experience: getValue('narrative[relevant_experience]'),
-          },
-          consent: {
-            contact_opportunities: getChecked('consent[contact_opportunities]'),
-            data_storage: getChecked('consent[data_storage]'),
-          },
-        };
+        const payload = getStructuredPayload();
 
         payloadField.value = JSON.stringify(payload);
+        return payload;
       }
 
       form.addEventListener('input', updateStructuredPayload);
       form.addEventListener('change', updateStructuredPayload);
-      form.addEventListener('submit', updateStructuredPayload);
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        if (!form.reportValidity()) return;
+
+        const structuredPayload = updateStructuredPayload();
+        const web3FormsPayload = serializeJoinUsForm(structuredPayload);
+
+        setSubmitState({ submitting: true, tone: 'neutral', message: '' });
+
+        try {
+          await submitJoinUs(web3FormsPayload);
+          setSubmitState({
+            submitting: false,
+            tone: 'success',
+            message: 'Thank you. Your submission has been received and will be reviewed personally.',
+          });
+        } catch (error) {
+          setSubmitState({
+            submitting: false,
+            tone: 'error',
+            message:
+              error instanceof Error
+                ? `We could not send your form just now. ${error.message}`
+                : 'We could not send your form just now. Please try again in a moment.',
+          });
+        }
+      });
       updateStructuredPayload();
     })();
   </script>
