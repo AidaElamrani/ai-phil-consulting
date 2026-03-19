@@ -64,11 +64,16 @@ const metadata = {
 
 
  
-
+  <CallToAction
+    title="About us"
+    subtitle="We are a network of researchers and professionals who share a passion for AI and wisdom, and a commitment to careful thinking, honest communication, and real-world impact."
+    actions={[{ text: 'Learn more', href: getPermalink('/join-us') }]}
+    classes={{ container: 'pt-0' }}
+  />
   <CallToAction
     title="Join us"
     subtitle="Researchers and professionals interested in contributing to talks, workshops, panels, or advisory work are invited to get in touch."
-    actions={[{ text: 'Join us', href: getPermalink('/join-us') }]}
+    actions={[{ text: 'Fill the form', href: getPermalink('/join-us') }]}
     classes={{ container: 'pt-0' }}
   />
 
