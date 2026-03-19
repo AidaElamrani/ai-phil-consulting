@@ -87,56 +87,59 @@ const advisoryItems = [
     subtitle="Each question calls for a different approach.<br />We combine from these formats and adapt to each situation."
   />
 
-  <section id="research" class="px-4 py-8 sm:px-5 sm:py-10 lg:py-12">
+  <section id="research" class="px-4 py-7 sm:px-5 sm:py-9 lg:py-10">
     <div class="mx-auto max-w-5xl">
-      <div class="rounded-[2rem] border border-stone-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.72),rgba(255,255,255,0.5))] px-5 py-7 shadow-[0_18px_50px_rgba(27,31,36,0.04)] sm:px-7 sm:py-8 lg:px-8 lg:py-9">
-        <div class="grid gap-7 lg:grid-cols-[minmax(0,1.16fr)_minmax(20rem,0.84fr)] lg:items-start lg:gap-8">
-        <div class="max-w-[38rem]">
+      <div class="rounded-[2rem] border border-stone-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.72),rgba(255,255,255,0.5))] px-5 py-6 shadow-[0_18px_50px_rgba(27,31,36,0.04)] sm:px-7 sm:py-7 lg:px-8 lg:py-8">
+        <div class="grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(25rem,1.1fr)] lg:items-start lg:gap-7">
+        <div class="max-w-[39rem] lg:pt-1">
           <div class="flex items-center gap-3 text-muted">
             <div class="flex h-12 w-12 items-center justify-center rounded-full border border-stone-200/80 bg-white/75 text-muted transition-colors duration-200 hover:text-accent">
               <Icon name="tabler:compass" class="h-7 w-7" />
             </div>
-            <div class="h-px max-w-[15rem] flex-1 bg-stone-200/80"></div>
+            <div class="h-px max-w-[6.5rem] flex-1 bg-stone-200/80"></div>
           </div>
-          <p class="mt-6 text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-secondary/75">Research</p>
-          <p class="mt-4 max-w-[34rem] text-[1.08rem] leading-[1.82] text-[rgb(39_44_52_/_.78)] sm:text-[1.12rem]">
+          <div class="mt-5 max-w-[32rem]">
+            <p class="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-secondary/75">Research</p>
+            <h2 class="mt-2.5 font-heading text-[2.55rem] font-semibold leading-[0.98] tracking-[-0.04em] text-heading sm:text-[3.2rem]">
+              Research
+            </h2>
+          </div>
+          <p class="mt-3.5 max-w-[30rem] text-[1.08rem] leading-[1.8] text-[rgb(39_44_52_/_.78)] sm:text-[1.12rem]">
             In-depth investigation of complex or open-ended questions related to AI, combining conceptual analysis,
             interdisciplinary perspectives, and, where relevant, technical or empirical elements.
           </p>
         </div>
 
-        <div class="rounded-[1.75rem] border border-stone-200/80 bg-white/65 p-5 sm:p-6 lg:p-7">
-          <dl class="space-y-5">
+        <div class="rounded-[1.75rem] border border-stone-200/70 bg-white/60 p-5 sm:p-6 lg:p-6">
+          <dl class="space-y-4.5">
             <div>
               <dt class="text-[0.74rem] font-semibold uppercase tracking-[0.2em] text-secondary/70">Duration</dt>
-              <dd class="mt-2 text-[1rem] leading-[1.7] text-[rgb(39_44_52_/_.76)]">
-                From a few weeks to several months
+              <dd class="mt-2.5">
+                <span class={metadataChipClass}>From a few weeks to several months</span>
               </dd>
             </div>
-            <div class="border-t border-stone-200/80 pt-5">
+            <div class="border-t border-stone-200/75 pt-4.5">
               <dt class="text-[0.74rem] font-semibold uppercase tracking-[0.2em] text-secondary/70">Format</dt>
-              <dd class="mt-2 text-[1rem] leading-[1.7] text-[rgb(39_44_52_/_.76)]">
-                Iterative collaboration with regular exchanges and intermediate outputs
+              <dd class="mt-2.5">
+                <span class={metadataChipClass}>
+                  Iterative collaboration with regular exchanges and intermediate outputs
+                </span>
               </dd>
             </div>
-            <div class="border-t border-stone-200/80 pt-5">
+            <div class="border-t border-stone-200/75 pt-4.5">
               <dt class="text-[0.74rem] font-semibold uppercase tracking-[0.2em] text-secondary/70">Best for</dt>
               <dd class="mt-2.5">
-                <ul class="space-y-1.5 text-[1rem] leading-[1.7] text-[rgb(39_44_52_/_.76)]">
-                  <li>Evolving or poorly defined questions</li>
-                  <li>Exploratory or forward-looking topics</li>
-                  <li>Foundational work preceding strategic decisions</li>
-                </ul>
+                <span class={metadataChipClass}>
+                  Evolving or poorly defined questions, exploratory or forward-looking topics, foundational work preceding strategic decisions
+                </span>
               </dd>
             </div>
-            <div class="border-t border-stone-200/80 pt-5">
+            <div class="border-t border-stone-200/75 pt-4.5">
               <dt class="text-[0.74rem] font-semibold uppercase tracking-[0.2em] text-secondary/70">Deliverables</dt>
               <dd class="mt-2.5">
-                <ul class="space-y-1.5 text-[1rem] leading-[1.7] text-[rgb(39_44_52_/_.76)]">
-                  <li>Research reports</li>
-                  <li>Structured briefs or notes</li>
-                  <li>Presentations and discussion sessions</li>
-                </ul>
+                <span class={metadataChipClass}>
+                  Research reports, structured briefs or notes, presentations and discussion sessions
+                </span>
               </dd>
             </div>
           </dl>

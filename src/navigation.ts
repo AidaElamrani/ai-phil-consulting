@@ -20,14 +20,11 @@ export const footerData = {
       title: 'Connect',
       links: [
         { text: 'Join us', href: getPermalink('/join-us') },
-        { text: 'Contact', href: getPermalink('/contact') },
-        { text: 'Paris based, international in scope', href: getPermalink('/contact') },
       ],
     },
   ],
   secondaryLinks: [],
   socialLinks: [],
   footNote: `
-    Independent perspectives on artificial intelligence and its implications.
   `,
 };
