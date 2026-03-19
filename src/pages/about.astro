@@ -1,79 +1,86 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import HeroText from '~/components/widgets/HeroText.astro';
-import MissionPanel from '~/components/widgets/MissionPanel.astro';
-import Features2 from '~/components/widgets/Features2.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
-import { valuesItems } from '~/data/site';
-import { getPermalink } from '~/utils/permalinks';
 
 const metadata = {
   title: 'About',
 };
+
+const sections = [
+  {
+    title: 'Mission',
+    paragraphs: [
+      'AI is evolving rapidly, while our ways of understanding and discussing it struggle to keep pace. Important questions are often simplified, avoided, or addressed within constraints that limit how they can be expressed.',
+      'At the same time, a great deal of expertise exists across disciplines, yet too little of it reaches public and organizational decision-making in forms that are both rigorous and usable.',
+      'AI-Phil Consulting exists to help bridge that gap: to bring forward clear, responsible, and well-grounded insight at a time when it is most needed.',
+    ],
+  },
+  {
+    title: 'How we operate',
+    paragraphs: [
+      'We begin with the question itself, especially when it is complex, sensitive, or insufficiently explored. Rather than relying on standardized methodologies or pre-formatted deliverables, we build each engagement around the problem at hand.',
+      'We assemble small, purpose-built collaborations and work in focused formats that prioritize depth, clarity, and relevance. This allows us to address questions that do not fit conventional consulting models, and to produce insights that are both rigorous and usable.',
+      'Based in Paris and connected to international networks, we work across contexts and can establish confidentiality frameworks whenever open and responsible analysis requires them.',
+    ],
+  },
+  {
+    title: 'Who we help',
+    paragraphs: [
+      'We support organizations and individuals seeking to engage wisely with complex questions related to AI.',
+      'Our work is especially suited to situations where clarity matters, where decisions carry weight, and where standard approaches fall short.',
+      'We collaborate with people and institutions who value careful thinking, honest communication, and real-world impact.',
+    ],
+  },
+];
 ---
 
 <Layout metadata={metadata}>
-  <HeroText
-    tagline="About"
-    title="The Parisian studio to engage wisely with AI"
-    subtitle="AI-Phil Consulting was founded and is coordinated by Aïda Elamrani. It combines philosophy, science, and AI expertise in work designed for organisations seeking intellectual clarity rather than ready-made talking points."
-  />
+  <section class="relative overflow-hidden px-4 pb-8 pt-4 sm:px-6 md:-mt-[76px] md:pt-[104px] lg:pb-10">
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div
+        class="absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_top,rgba(154,122,88,0.06),transparent_72%)]"
+      >
+      </div>
+      <div
+        class="absolute right-[12%] top-24 hidden h-56 w-56 rounded-full border border-[rgba(39,56,78,0.04)] lg:block"
+      >
+      </div>
+    </div>
 
-  <MissionPanel title="Mission" classes={{ container: 'pt-2 md:pt-4 lg:pt-6 pb-6 md:pb-8' }} />
+    <div class="relative mx-auto max-w-7xl">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-[0.74rem] font-semibold uppercase tracking-[0.28em] text-secondary/80">About</p>
+        <h1
+          class="mt-5 font-heading text-[3.1rem] font-semibold leading-[0.96] tracking-[-0.045em] text-heading sm:text-[4rem] lg:text-[4.5rem]"
+        >
+          We love AI and wisdom
+        </h1>
+        <p
+          class="mx-auto mt-7 max-w-[42rem] text-[1.05rem] leading-[1.95] text-[rgb(39_44_52_/_.78)] sm:text-[1.12rem]"
+        >
+          Why AI-Phil? Artificial points to what is made, designed, or imitated. Intelligence remains a contested
+          notion, with no single agreed definition. Phil comes from the Greek for love, as in philosophy: the love of
+          wisdom. AI-Phil Consulting brings these threads together.
+        </p>
+      </div>
+    </div>
+  </section>
 
-  <Features2
-    title="How the consultancy is organised"
-    columns={2}
-    items={[
-      {
-        title: 'Founded by Aïda Elamrani',
-        description:
-          'AI-Phil Consulting was founded and is coordinated by Aïda Elamrani, bringing together philosophical inquiry and close engagement with contemporary AI debates.',
-        icon: 'tabler:user-circle',
-      },
-      {
-        title: 'Interdisciplinary expertise',
-        description:
-          'The work combines philosophy, science, and AI expertise to address conceptual, ethical, and societal questions in a way that remains practically useful.',
-        icon: 'tabler:stack-2',
-      },
-      {
-        title: 'Networked collaboration',
-        description:
-          'Projects can draw on a network of researchers and professionals when a broader range of perspectives or specialist knowledge is needed.',
-        icon: 'tabler:network',
-      },
-      {
-        title: 'Paris based, international in scope',
-        description:
-          'AI-Phil Consulting is based in Paris and works internationally with organisations, institutions, and events across borders.',
-        icon: 'tabler:map-pin',
-      },
-    ]}
-    classes={{
-      items: {
-        panel: 'rounded-2xl border border-stone-200 bg-[rgba(255,255,255,0.72)] p-6 shadow-none',
-        icon: 'w-10 h-10 mb-5 text-primary',
-      },
-    }}
-  />
-
-  <Features2
-    title="Values"
-    columns={4}
-    items={valuesItems}
-    classes={{
-      items: {
-        panel: 'rounded-2xl border border-stone-200 bg-[rgba(255,255,255,0.72)] p-6 shadow-none',
-        icon: 'w-10 h-10 mb-5 text-accent',
-      },
-    }}
-  />
-
-  <CallToAction
-    title="Interested in working together?"
-    subtitle="The consultancy supports talks, workshops, panels, and advisory analysis for organisations that want careful, independent perspectives on AI."
-    actions={[{ text: 'Services', href: getPermalink('/services') }]}
-    classes={{ container: 'pt-8 pb-20' }}
-  />
+  <section class="px-4 pb-20 pt-6 sm:px-6 md:pt-8 lg:pb-24">
+    <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-3xl">
+        {
+          sections.map((section, index) => (
+            <section class:list={['py-10 sm:py-12 lg:py-14', index !== 0 && 'border-t border-stone-200/70']}>
+              <p class="text-[0.72rem] font-semibold uppercase tracking-[0.26em] text-secondary/78">{section.title}</p>
+              <div class="mt-6 space-y-5 text-[1.02rem] leading-[1.95] text-[rgb(39_44_52_/_.76)] sm:text-[1.08rem]">
+                {section.paragraphs.map((paragraph) => (
+                  <p>{paragraph}</p>
+                ))}
+              </div>
+            </section>
+          ))
+        }
+      </div>
+    </div>
+  </section>
 </Layout>

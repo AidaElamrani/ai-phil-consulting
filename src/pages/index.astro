@@ -61,66 +61,8 @@ const metadata = {
     </Fragment>
   </Hero>
 
-  <Features3
-    title="Wisdom in the Age of AI"
-    subtitle="Intelligence expands what we can do. Wisdom determines what is worth doing."
-    columns={3}
-    items={homeWisdoms}
-    classes={{
-      items: {
-        panel: 'rounded-2xl border border-stone-200 bg-[rgba(255,255,255,0.72)] p-6 shadow-none',
-        icon: 'w-11 h-11 mb-5 text-primary',
-      },
-    }}
-  />
 
-  <EditorialServices
-    tagline="What we provide"
-    title="Thinking through your hardest questions"
-    items={whatWeDoItems}
-    actions={[{ text: 'Browse our services', href: getPermalink('/services'), variant: 'secondary' }]}
-    classes={{ container: 'pt-4 md:pt-6 lg:pt-8' }}
-  />
-
-  <Features2
-    title="Services"
-    subtitle="Formats designed for organisations, institutions, and teams that need clear thinking on AI."
-    columns={4}
-    items={formatItems}
-    classes={{
-      items: {
-        panel: 'rounded-2xl border border-stone-200 bg-[rgba(255,255,255,0.72)] p-6 shadow-none',
-        icon: 'w-10 h-10 mb-5 text-accent',
-      },
-    }}
-  />
-
-  <Features2
-    title="Topics preview"
-    subtitle="Selected areas of inquiry for talks, panels, workshops, and advisory work."
-    columns={3}
-    items={topicItems}
-    classes={{
-      items: {
-        panel: 'rounded-2xl border border-stone-200 bg-[rgba(255,255,255,0.72)] p-6 shadow-none',
-        icon: 'w-10 h-10 mb-5 text-primary',
-      },
-    }}
-  />
-
-  <CallToAction
-    title="Services"
-    subtitle="AI-Phil Consulting offers talks, panels, workshops, and advisory analysis for organisations engaging seriously with AI."
-    actions={[{ text: 'Services', href: getPermalink('/services') }]}
-    classes={{ container: 'pt-8' }}
-  />
-
-  <CallToAction
-    title="About AI-Phil Consulting"
-    subtitle="AI-Phil Consulting was founded in Paris to provide independent, intellectually rigorous perspectives on artificial intelligence."
-    actions={[{ text: 'About', href: getPermalink('/about') }]}
-    classes={{ container: 'pt-0' }}
-  />
+ 
 
   <CallToAction
     title="Join us"
@@ -129,10 +71,5 @@ const metadata = {
     classes={{ container: 'pt-0' }}
   />
 
-  <CallToAction
-    title="Contact"
-    subtitle="If you would like to discuss talks, workshops, or advisory requests, we would be glad to hear from you."
-    actions={[{ text: 'Contact', href: getPermalink('/contact') }]}
-    classes={{ container: 'pt-0 pb-20' }}
-  />
+
 </Layout>

@@ -6,7 +6,6 @@ export const navLinks = [
   { text: 'Topics', href: getPermalink('/topics') },
   { text: 'Services', href: getPermalink('/services') },
   { text: 'Join us', href: getPermalink('/join-us') },
-  { text: 'Contact', href: getPermalink('/contact') },
 ];
 
 export const topicItems = [
@@ -18,8 +17,6 @@ export const topicItems = [
     availableAs: [
       { label: 'Talk', href: getPermalink('/services#talks') },
       { label: 'Workshop', href: getPermalink('/services#workshops') },
-      { label: 'Research', href: getPermalink('/services#research') },
-      { label: 'Advisory', href: getPermalink('/services#advisory') },
     ],
   },
   {
@@ -31,7 +28,6 @@ export const topicItems = [
       { label: 'Talk', href: getPermalink('/services#talks') },
       { label: 'Workshop', href: getPermalink('/services#workshops') },
       { label: 'Research', href: getPermalink('/services#research') },
-      { label: 'Advisory', href: getPermalink('/services#advisory') },
     ],
   },
   {
@@ -40,10 +36,7 @@ export const topicItems = [
       'Understanding how large language models behave, their cognitive and societal effects, and how to use them effectively and responsibly in different contexts.',
     icon: 'tabler:message-2-check',
     availableAs: [
-      { label: 'Talk', href: getPermalink('/services#talks') },
       { label: 'Workshop', href: getPermalink('/services#workshops') },
-      { label: 'Research', href: getPermalink('/services#research') },
-      { label: 'Advisory', href: getPermalink('/services#advisory') },
     ],
   },
   {
@@ -53,32 +46,26 @@ export const topicItems = [
     icon: 'tabler:radar-2',
     availableAs: [
       { label: 'Talk', href: getPermalink('/services#talks') },
-      { label: 'Workshop', href: getPermalink('/services#workshops') },
-      { label: 'Research', href: getPermalink('/services#research') },
       { label: 'Advisory', href: getPermalink('/services#advisory') },
     ],
   },
   {
-    title: 'Artificial Consciousness & Digital Minds',
+    title: 'Consciousness & Digital Minds',
     description:
-      'An interdisciplinary exploration of whether AI systems can be said to think, understand, or experience, drawing on computer science, neuroscience, and philosophy of mind.',
+      'To what extent can AI be said to think, feel or understand? An interdisciplinary analysis combining computer science, physics, neuroscience, philosophy of mind, and guided by a critical perspective on the history of scientific progress.',
     icon: 'tabler:sparkles',
     availableAs: [
       { label: 'Talk', href: getPermalink('/services#talks') },
-      { label: 'Workshop', href: getPermalink('/services#workshops') },
-      { label: 'Research', href: getPermalink('/services#research') },
-      { label: 'Advisory', href: getPermalink('/services#advisory') },
     ],
   },
   {
     title: 'AI & Creativity',
     description:
-      'Exploring the role of AI in creative processes — from generative systems to questions of novelty, authorship, and innovation.',
+      'The role of AI in creative processes — from generative systems to questions of novelty, authorship, and innovation.',
     icon: 'tabler:palette',
     availableAs: [
       { label: 'Talk', href: getPermalink('/services#talks') },
       { label: 'Workshop', href: getPermalink('/services#workshops') },
-      { label: 'Research', href: getPermalink('/services#research') },
       { label: 'Advisory', href: getPermalink('/services#advisory') },
     ],
   },
