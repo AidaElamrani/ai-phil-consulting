@@ -8,6 +8,9 @@ const metadata = {
   title: 'Services',
 };
 
+const metadataChipClass =
+  'rounded-full border border-stone-200/85 bg-stone-50/80 px-3 py-1.5 text-[0.78rem] font-medium leading-[1.45] text-[rgb(39_44_52_/_.68)]';
+
 const conferenceItems = [
   {
     id: 'talks',
@@ -46,27 +49,33 @@ const conferenceItems = [
 const advisoryItems = [
   {
     id: 'advisory',
-    title: 'Exploratory Advisory',
+    title: 'Exploratory',
     icon: 'tabler:message-circle',
     description:
       'A focused discussion to clarify a question, identify key issues, and explore possible directions.',
-    bestFor: 'Best for: early-stage reflection, problem framing, confidential exchange',
-    deliverable: 'Deliverable: optional short written summary',
+    chips: [
+      'Best for: early-stage reflection, problem framing, confidential exchange',
+      'Deliverable: optional short written summary',
+    ],
   },
   {
-    title: 'Targeted Analysis',
+    title: 'Targeted',
     icon: 'tabler:file-analytics',
     description: 'A structured written analysis addressing a clearly defined AI-related issue.',
-    includes: 'Includes: problem definition, background review, analysis, recommendations',
-    bestFor: 'Best for: decision support, project review, strategic clarification',
+    chips: [
+      'Format: problem definition, background review, analysis, recommendations',
+      'Best for: decision support, project review, strategic clarification',
+    ],
   },
   {
-    title: 'Advisory + Memo',
+    title: 'Hybrid',
     icon: 'tabler:notes',
     description:
       'A hybrid format combining expert discussion with a concise written synthesis.',
-    bestFor: 'Best for: evolving topics, sensitive questions, internal alignment',
-    deliverable: 'Deliverable: short structured memo',
+    chips: [
+      'Best for: evolving topics, sensitive questions, internal alignment',
+      'Deliverable: short structured memo',
+    ],
   },
 ];
 ---
@@ -78,58 +87,55 @@ const advisoryItems = [
     subtitle="Each question calls for a different approach.<br />We combine from these formats and adapt to each situation."
   />
 
-  <section id="research" class="px-4 py-10 sm:px-6 sm:py-12 lg:py-14">
+  <section id="research" class="px-4 py-8 sm:px-5 sm:py-10 lg:py-12">
     <div class="mx-auto max-w-5xl">
-      <div class="rounded-[2rem] border border-stone-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.72),rgba(255,255,255,0.5))] px-6 py-8 shadow-[0_18px_50px_rgba(27,31,36,0.04)] sm:px-8 sm:py-10 lg:px-10 lg:py-12">
-        <div class="grid gap-10 lg:grid-cols-[minmax(0,1.45fr)_minmax(18rem,0.9fr)] lg:gap-14">
-        <div class="max-w-2xl">
-          <div class="flex items-center gap-4 text-muted">
+      <div class="rounded-[2rem] border border-stone-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.72),rgba(255,255,255,0.5))] px-5 py-7 shadow-[0_18px_50px_rgba(27,31,36,0.04)] sm:px-7 sm:py-8 lg:px-8 lg:py-9">
+        <div class="grid gap-7 lg:grid-cols-[minmax(0,1.16fr)_minmax(20rem,0.84fr)] lg:items-start lg:gap-8">
+        <div class="max-w-[38rem]">
+          <div class="flex items-center gap-3 text-muted">
             <div class="flex h-12 w-12 items-center justify-center rounded-full border border-stone-200/80 bg-white/75 text-muted transition-colors duration-200 hover:text-accent">
               <Icon name="tabler:compass" class="h-7 w-7" />
             </div>
-            <div class="h-px flex-1 bg-stone-200/80"></div>
+            <div class="h-px max-w-[15rem] flex-1 bg-stone-200/80"></div>
           </div>
-          <p class="mt-8 text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-secondary/75">Research</p>
-          <h2 class="mt-4 font-heading text-[2.7rem] font-semibold leading-[0.98] tracking-[-0.04em] text-heading sm:text-[3.4rem]">
-            Research
-          </h2>
-          <p class="mt-6 text-[1.08rem] leading-[1.95] text-[rgb(39_44_52_/_.78)] sm:text-[1.12rem]">
+          <p class="mt-6 text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-secondary/75">Research</p>
+          <p class="mt-4 max-w-[34rem] text-[1.08rem] leading-[1.82] text-[rgb(39_44_52_/_.78)] sm:text-[1.12rem]">
             In-depth investigation of complex or open-ended questions related to AI, combining conceptual analysis,
             interdisciplinary perspectives, and, where relevant, technical or empirical elements.
           </p>
         </div>
 
-        <div class="rounded-[1.75rem] border border-stone-200/80 bg-white/65 p-6 sm:p-8">
-          <dl class="space-y-6">
+        <div class="rounded-[1.75rem] border border-stone-200/80 bg-white/65 p-5 sm:p-6 lg:p-7">
+          <dl class="space-y-5">
             <div>
               <dt class="text-[0.74rem] font-semibold uppercase tracking-[0.2em] text-secondary/70">Duration</dt>
-              <dd class="mt-2 text-[1rem] leading-[1.8] text-[rgb(39_44_52_/_.76)]">
-                from a few weeks to several months
+              <dd class="mt-2 text-[1rem] leading-[1.7] text-[rgb(39_44_52_/_.76)]">
+                From a few weeks to several months
               </dd>
             </div>
-            <div class="border-t border-stone-200/80 pt-6">
+            <div class="border-t border-stone-200/80 pt-5">
               <dt class="text-[0.74rem] font-semibold uppercase tracking-[0.2em] text-secondary/70">Format</dt>
-              <dd class="mt-2 text-[1rem] leading-[1.8] text-[rgb(39_44_52_/_.76)]">
-                iterative collaboration with regular exchanges and intermediate outputs
+              <dd class="mt-2 text-[1rem] leading-[1.7] text-[rgb(39_44_52_/_.76)]">
+                Iterative collaboration with regular exchanges and intermediate outputs
               </dd>
             </div>
-            <div class="border-t border-stone-200/80 pt-6">
+            <div class="border-t border-stone-200/80 pt-5">
               <dt class="text-[0.74rem] font-semibold uppercase tracking-[0.2em] text-secondary/70">Best for</dt>
-              <dd class="mt-3">
-                <ul class="space-y-2 text-[1rem] leading-[1.8] text-[rgb(39_44_52_/_.76)]">
-                  <li>evolving or poorly defined questions</li>
-                  <li>exploratory or forward-looking topics</li>
-                  <li>foundational work preceding strategic decisions</li>
+              <dd class="mt-2.5">
+                <ul class="space-y-1.5 text-[1rem] leading-[1.7] text-[rgb(39_44_52_/_.76)]">
+                  <li>Evolving or poorly defined questions</li>
+                  <li>Exploratory or forward-looking topics</li>
+                  <li>Foundational work preceding strategic decisions</li>
                 </ul>
               </dd>
             </div>
-            <div class="border-t border-stone-200/80 pt-6">
+            <div class="border-t border-stone-200/80 pt-5">
               <dt class="text-[0.74rem] font-semibold uppercase tracking-[0.2em] text-secondary/70">Deliverables</dt>
-              <dd class="mt-3">
-                <ul class="space-y-2 text-[1rem] leading-[1.8] text-[rgb(39_44_52_/_.76)]">
-                  <li>research reports</li>
-                  <li>structured briefs or notes</li>
-                  <li>presentations and discussion sessions</li>
+              <dd class="mt-2.5">
+                <ul class="space-y-1.5 text-[1rem] leading-[1.7] text-[rgb(39_44_52_/_.76)]">
+                  <li>Research reports</li>
+                  <li>Structured briefs or notes</li>
+                  <li>Presentations and discussion sessions</li>
                 </ul>
               </dd>
             </div>
@@ -144,9 +150,6 @@ const advisoryItems = [
     <div class="mx-auto max-w-5xl">
       <div class="max-w-3xl">
         <p class="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-secondary/75">Conferences & Workshops</p>
-        <h2 class="mt-4 font-heading text-[2.45rem] font-semibold leading-[1.02] tracking-[-0.04em] text-heading sm:text-[3rem]">
-          Conferences & Workshops
-        </h2>
         <p class="mt-5 text-[1.04rem] leading-[1.9] text-[rgb(39_44_52_/_.76)]">
           Formats designed to share knowledge, stimulate discussion, and support collective understanding of
           AI-related questions.
@@ -157,16 +160,18 @@ const advisoryItems = [
         {
           conferenceItems.map((item) => (
             <article id={item.id} class="group flex h-full flex-col rounded-[1.75rem] border border-stone-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.8),rgba(255,255,255,0.64))] p-7 shadow-[0_14px_32px_rgba(27,31,36,0.035)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(27,31,36,0.07)]">
-              <div class="flex h-12 w-12 items-center justify-center rounded-full border border-stone-200/80 bg-stone-50/80 text-muted transition-colors duration-200 group-hover:text-accent">
-                <Icon name={item.icon} class="h-7 w-7" />
+              <div class="flex items-center gap-3.5">
+                <div class="flex h-10 w-10 items-center justify-center rounded-full border border-stone-200/80 bg-stone-50/80 text-muted transition-colors duration-200 group-hover:text-accent">
+                  <Icon name={item.icon} class="h-5 w-5" />
+                </div>
+                <h3 class="font-heading text-[2rem] font-semibold leading-none tracking-[-0.03em] text-heading">
+                  {item.title}
+                </h3>
               </div>
-              <h3 class="mt-6 font-heading text-[2rem] font-semibold leading-none tracking-[-0.03em] text-heading">
-                {item.title}
-              </h3>
               <p class="mt-4 text-[0.99rem] leading-[1.85] text-[rgb(39_44_52_/_.74)]">{item.description}</p>
               <div class="mt-6 flex flex-wrap gap-2.5 pt-1">
                 {item.chips.map((chip) => (
-                  <span class="rounded-full border border-stone-200/85 bg-stone-50/80 px-3 py-1.5 text-[0.78rem] font-medium leading-[1.45] text-[rgb(39_44_52_/_.68)]">
+                  <span class={metadataChipClass}>
                     {chip}
                   </span>
                 ))}
@@ -182,9 +187,6 @@ const advisoryItems = [
     <div class="mx-auto max-w-5xl">
       <div class="max-w-3xl">
         <p class="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-secondary/75">Advisory & Analysis</p>
-        <h2 class="mt-4 font-heading text-[2.45rem] font-semibold leading-[1.02] tracking-[-0.04em] text-heading sm:text-[3rem]">
-          Advisory & Analysis
-        </h2>
         <p class="mt-5 text-[1.04rem] leading-[1.9] text-[rgb(39_44_52_/_.76)]">
           Focused formats designed to support reflection, clarify issues, and inform decisions.
         </p>
@@ -194,19 +196,21 @@ const advisoryItems = [
         {
           advisoryItems.map((item) => (
             <article id={item.id} class="group flex h-full flex-col rounded-[1.75rem] border border-stone-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.82),rgba(255,255,255,0.68))] p-7 shadow-[0_14px_32px_rgba(27,31,36,0.035)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(27,31,36,0.07)]">
-              <div class="flex h-12 w-12 items-center justify-center rounded-full border border-stone-200/80 bg-stone-50/80 text-muted transition-colors duration-200 group-hover:text-accent">
-                <Icon name={item.icon} class="h-7 w-7" />
+              <div class="flex items-center gap-3.5">
+                <div class="flex h-10 w-10 items-center justify-center rounded-full border border-stone-200/80 bg-stone-50/80 text-muted transition-colors duration-200 group-hover:text-accent">
+                  <Icon name={item.icon} class="h-5 w-5" />
+                </div>
+                <h3 class="font-heading text-[2rem] font-semibold leading-none tracking-[-0.03em] text-heading">
+                  {item.title}
+                </h3>
               </div>
-              <h3 class="mt-6 font-heading text-[2rem] font-semibold leading-none tracking-[-0.03em] text-heading">
-                {item.title}
-              </h3>
               <p class="mt-4 text-[0.99rem] leading-[1.85] text-[rgb(39_44_52_/_.74)]">{item.description}</p>
-              <div class="mt-6 space-y-3 border-t border-stone-200/75 pt-5">
-              {item.includes && <p class="text-[0.88rem] leading-[1.7] text-[rgb(39_44_52_/_.68)]">{item.includes}</p>}
-              <p class="text-[0.88rem] leading-[1.7] text-[rgb(39_44_52_/_.68)]">{item.bestFor}</p>
-              {item.deliverable && (
-                <p class="text-[0.88rem] leading-[1.7] text-[rgb(39_44_52_/_.68)]">{item.deliverable}</p>
-              )}
+              <div class="mt-6 flex flex-wrap gap-2.5 pt-1">
+                {item.chips.map((chip) => (
+                  <span class={metadataChipClass}>
+                    {chip}
+                  </span>
+                ))}
               </div>
             </article>
           ))
