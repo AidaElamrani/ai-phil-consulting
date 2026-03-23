@@ -10,42 +10,89 @@
     background-color: var(--aw-color-bg-page-dark);
   }
   .bg-light {
-    background-color: var(--aw-color-bg-page);
+    background-color: var(--aw-color-surface);
+  }
+  .bg-surface {
+    background-color: var(--aw-color-surface);
   }
   .text-page {
     color: var(--aw-color-text-page);
   }
+  .text-heading {
+    color: var(--aw-color-text-heading);
+  }
+  .text-secondary {
+    color: var(--aw-color-text-secondary);
+  }
   .text-muted {
     color: var(--aw-color-text-muted);
+  }
+  .border-soft {
+    border-color: var(--aw-color-border);
   }
 }
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center rounded-full border-gray-400 border bg-transparent font-medium text-center text-base text-page leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:ring-blue-500 focus:ring-offset-blue-200 focus:ring-2 focus:ring-offset-2 hover:bg-gray-100 hover:border-gray-600 dark:text-slate-300 dark:border-slate-500 dark:hover:bg-slate-800 dark:hover:border-slate-800 cursor-pointer;
+    @apply inline-flex items-center justify-center rounded-full border border-soft bg-transparent font-medium text-center text-base text-page leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:ring-2 cursor-pointer;
+    background-color: rgb(244 241 236 / 0.56);
+    border-color: var(--aw-color-border);
+    color: var(--aw-color-text-primary);
+  }
+
+  .btn:hover {
+    background-color: rgb(234 229 221 / 0.9);
+    border-color: rgb(174 157 133 / 0.55);
+    color: var(--aw-color-text-primary);
+  }
+
+  .btn:focus-visible {
+    outline: none;
+    --tw-ring-color: rgb(167 199 231 / 0.45);
+    --tw-ring-offset-color: var(--aw-color-background);
   }
 
   .btn-primary {
-    @apply btn font-semibold bg-primary text-white border-primary hover:bg-secondary hover:border-secondary hover:text-white dark:text-white dark:bg-primary dark:border-primary dark:hover:border-secondary dark:hover:bg-secondary;
+    @apply btn font-semibold text-white;
+    background-color: var(--aw-color-accent);
+    border-color: var(--aw-color-accent);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--aw-color-accent-hover);
+    border-color: var(--aw-color-accent-hover);
+    color: white;
   }
 
   .btn-secondary {
     @apply btn;
+    border-color: rgb(196 187 175 / 0.92);
   }
 
   .btn-tertiary {
-    @apply btn border-none shadow-none text-muted hover:text-gray-900 dark:text-gray-400 dark:hover:text-white;
+    @apply btn border-none shadow-none text-muted;
+    background-color: transparent;
+  }
+
+  .btn-tertiary:hover {
+    background-color: transparent;
+    color: var(--aw-color-text-primary);
   }
 }
 
 #header.scroll > div:first-child {
-  @apply bg-page md:bg-white/90 md:backdrop-blur-md;
-  box-shadow: 0 0.375rem 1.5rem 0 rgb(140 152 164 / 13%);
+  @apply bg-page md:backdrop-blur-md;
+  background-color: rgb(244 241 236 / 0.94);
+  border-bottom: 1px solid rgb(216 209 199 / 0.72);
+  box-shadow: 0 0.375rem 1.5rem 0 rgb(47 47 47 / 0.04);
 }
 .dark #header.scroll > div:first-child,
 #header.scroll.dark > div:first-child {
-  @apply bg-page md:bg-[#030621e6] border-b border-gray-500/20;
-  box-shadow: none;
+  @apply bg-page;
+  background-color: rgb(244 241 236 / 0.94);
+  border-bottom: 1px solid rgb(216 209 199 / 0.72);
+  box-shadow: 0 0.375rem 1.5rem 0 rgb(47 47 47 / 0.04);
 }
 /* #header.scroll > div:last-child {
   @apply py-3;
@@ -64,6 +111,14 @@
 .dropdown:focus-within .dropdown-menu,
 .dropdown:hover .dropdown-menu {
   display: block;
+}
+
+.aw-link-active {
+  color: var(--aw-color-text-primary);
+}
+
+.aw-link-inactive {
+  color: rgb(75 85 99 / 0.84);
 }
 
 [astro-icon].icon-light > * {

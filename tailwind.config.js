@@ -7,9 +7,20 @@ export default {
   theme: {
     extend: {
       colors: {
+        background: 'var(--aw-color-background)',
+        surface: 'var(--aw-color-surface)',
+        border: 'var(--aw-color-border)',
         primary: 'var(--aw-color-primary)',
         secondary: 'var(--aw-color-secondary)',
         accent: 'var(--aw-color-accent)',
+        'accent-hover': 'var(--aw-color-accent-hover)',
+        'accent-soft': 'var(--aw-color-accent-soft)',
+        heading: 'var(--aw-color-text-heading)',
+        'text-primary': 'var(--aw-color-text-primary)',
+        'text-secondary': 'var(--aw-color-text-secondary)',
+        'brand-eiffel': 'var(--aw-color-brand-eiffel)',
+        'brand-eiffel-soft': 'var(--aw-color-brand-eiffel-soft)',
+        link: 'var(--aw-color-accent)',
         default: 'var(--aw-color-text-default)',
         muted: 'var(--aw-color-text-muted)',
       },

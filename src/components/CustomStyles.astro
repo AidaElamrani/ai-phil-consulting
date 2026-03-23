@@ -31,19 +31,29 @@ import '@fontsource/cormorant-garamond/700.css';
     --aw-font-serif: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
     --aw-font-heading: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
 
-    --aw-color-primary: rgb(39 56 78);
-    --aw-color-secondary: rgb(27 41 58);
-    --aw-color-accent: rgb(154 122 88);
+    --aw-color-background: #f4f1ec;
+    --aw-color-surface: #eae5dd;
+    --aw-color-border: #d8d1c7;
+    --aw-color-text-primary: #2f2f2f;
+    --aw-color-text-secondary: #4b5563;
+    --aw-color-text-muted: #6b7280;
+    --aw-color-accent: #2f5d7c;
+    --aw-color-accent-hover: #3e7fa3;
+    --aw-color-accent-soft: #a7c7e7;
+    --aw-color-brand-eiffel: #6b5a49;
+    --aw-color-brand-eiffel-soft: #ae9d85;
 
-    --aw-color-text-heading: rgb(27 31 36);
-    --aw-color-text-default: rgb(39 44 52);
-    --aw-color-text-muted: rgb(39 44 52 / 72%);
-    --aw-color-bg-page: rgb(248 246 241);
-
-    --aw-color-bg-page-dark: rgb(248 246 241);
+    --aw-color-primary: var(--aw-color-accent);
+    --aw-color-secondary: var(--aw-color-accent-hover);
+    --aw-color-text-heading: var(--aw-color-text-primary);
+    --aw-color-text-default: var(--aw-color-text-secondary);
+    --aw-color-bg-page: var(--aw-color-background);
+    --aw-color-bg-page-dark: var(--aw-color-background);
+    --aw-color-text-page: var(--aw-color-text-primary);
 
     ::selection {
-      background-color: rgb(225 214 195);
+      background-color: rgb(167 199 231 / 42%);
+      color: var(--aw-color-text-primary);
     }
   }
 
@@ -52,18 +62,17 @@ import '@fontsource/cormorant-garamond/700.css';
     --aw-font-serif: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
     --aw-font-heading: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
 
-    --aw-color-primary: rgb(39 56 78);
-    --aw-color-secondary: rgb(27 41 58);
-    --aw-color-accent: rgb(154 122 88);
-
-    --aw-color-text-heading: rgb(27 31 36);
-    --aw-color-text-default: rgb(39 44 52);
-    --aw-color-text-muted: rgb(39 44 52 / 72%);
-    --aw-color-bg-page: rgb(248 246 241);
+    --aw-color-primary: var(--aw-color-accent);
+    --aw-color-secondary: var(--aw-color-accent-hover);
+    --aw-color-text-heading: var(--aw-color-text-primary);
+    --aw-color-text-default: var(--aw-color-text-secondary);
+    --aw-color-bg-page: var(--aw-color-background);
+    --aw-color-bg-page-dark: var(--aw-color-background);
+    --aw-color-text-page: var(--aw-color-text-primary);
 
     ::selection {
-      background-color: rgb(225 214 195);
-      color: rgb(27 31 36);
+      background-color: rgb(167 199 231 / 42%);
+      color: var(--aw-color-text-primary);
     }
   }
 </style>
