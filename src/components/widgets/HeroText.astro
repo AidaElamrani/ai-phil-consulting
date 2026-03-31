@@ -21,16 +21,16 @@ const {
 } = Astro.props;
 ---
 
-<section class="relative md:-mt-[76px] not-prose">
+<section class="relative not-prose md:-mt-[56px]">
   <div class="absolute inset-0 pointer-events-none" aria-hidden="true"></div>
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
-    <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
-    <div class="py-12 md:py-20 pb-8 md:pb-8">
-      <div class="text-center max-w-5xl mx-auto">
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="pointer-events-none pt-0 md:pt-[56px]"></div>
+    <div class="py-12 md:py-14 lg:py-16">
+      <div class="mx-auto max-w-5xl text-center">
         {
           tagline && (
             <p
-              class="text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase motion-safe:animate-hero-fade"
+              class="mb-5 text-[0.74rem] font-semibold uppercase tracking-[0.28em] text-secondary/80 motion-safe:animate-hero-fade"
               set:html={tagline}
             />
           )
@@ -38,22 +38,22 @@ const {
         {
           title && (
             <h1
-              class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200 motion-safe:animate-hero-fade"
+              class="mb-6 font-heading text-[clamp(3.4rem,7vw,5.4rem)] font-black leading-[0.94] tracking-[-0.03em] text-heading motion-safe:animate-hero-fade lg:mb-7"
               set:html={title}
             />
           )
         }
-        <div class="max-w-3xl mx-auto">
+        <div class="mx-auto max-w-[36rem]">
           {
             subtitle && (
               <p
-                class="text-xl text-muted mb-6 dark:text-slate-300 motion-safe:animate-hero-fade"
+                class="mb-9 max-w-[36rem] text-[clamp(1.2rem,2vw,1.6rem)] font-normal leading-[1.46] text-secondary/90 motion-safe:animate-hero-fade lg:mb-10"
                 set:html={subtitle}
               />
             )
           }
           <div
-            class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 motion-safe:animate-hero-fade"
+            class="m-auto flex max-w-xs flex-col flex-nowrap gap-4 motion-safe:animate-hero-fade sm:max-w-md sm:flex-row sm:justify-center"
           >
             {
               callToAction && (
