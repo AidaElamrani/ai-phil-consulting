@@ -97,10 +97,13 @@ const languageOptions = [
         </p>
       </div>
 
-      <form data-join-us-form class="space-y-6" method="post" action="">
+      <form data-join-us-form class="space-y-6" method="post" action="https://api.web3forms.com/submit">
         <input type="hidden" name="submission[source]" value="join-us" />
         <input type="hidden" name="submission[payload_json]" value="" data-structured-payload />
         <input type="hidden" name="access_key" value="bf50f0c3-d0e7-476b-a944-5ca64895f99e">
+        <input type="hidden" name="subject" value="New AI-Phil Join Us submission" />
+        <input type="hidden" name="from_name" value="AI-Phil Consulting" />
+        <input type="checkbox" name="botcheck" style="display:none" />
 
 
         <section
